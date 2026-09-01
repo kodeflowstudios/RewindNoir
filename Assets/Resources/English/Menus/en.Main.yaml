@@ -6,3 +6,5 @@ Dialogue:
     Text: "Rewind Noir"
   play:
     Text: "Play"
+  quit:
+    Text: "Quitttttt"
