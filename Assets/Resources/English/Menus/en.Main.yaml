@@ -2,9 +2,9 @@ MetaData:
   Language: English
   TextDirection: LTR
 Dialogue:
-  title:
+  label_title:
     Text: "Rewind Noir"
-  play:
+  button_play:
     Text: "Play"
-  quit:
-    Text: "Quitttttt"
+  button_quit:
+    Text: "Quit"
