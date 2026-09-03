@@ -33,5 +33,7 @@ Button:focus {
 
 .version-label {
 	font-size: 20px;
+	padding-right: 4px;
+	align-self: flex-end;
 	-unity-font-style: bold;
 }
