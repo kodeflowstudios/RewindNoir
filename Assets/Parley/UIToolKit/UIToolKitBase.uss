@@ -1,0 +1,81 @@
+:root {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#mainContainer {
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+#dialogueContainer {
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 80%;
+    height: 40%;
+}
+
+#characterImage {
+	position: absolute; 
+	top: 626px; 
+	left: 1236px;
+	height: 300px; 
+	width: 300px; 
+}
+
+#speakerNameBox {
+    flex-grow: 0;
+    flex-shrink: 1;
+    background-color: rgb(33, 33, 33);
+    width: 15%;
+    height: auto;
+}
+
+#speakerNameText {
+    flex-grow: 1;
+    flex-shrink: 0;
+    color: rgb(227, 227, 227);
+    font-size: 300%;
+    -unity-text-align: middle-center;
+}
+
+#dialogueBox {
+    flex-grow: 0;
+    flex-shrink: 1;
+    background-color: rgb(20, 20, 20);
+    width: 100%;
+    height: auto;
+}
+
+#dialogueText {
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-left: 1%;
+    color: rgb(227, 227, 227);
+    font-size: 260%;
+    white-space: normal;
+}
+
+.dialogue-choice {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto;
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+    margin: 0;
+    padding: 2%;
+    border-width: 0;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 200%;
+}
+
+.dialogue-choice:hover {
+    background-color: #282828ff;
+}

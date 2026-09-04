@@ -1,0 +1,12 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  first:
+    Text: "Talk to Officer Marc"
+    NextNode: second
+  second:
+    Text: "Investigate the scene"
+    NextNode: third
+  third:
+    Text: "Head back"

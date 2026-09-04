@@ -1,0 +1,62 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  node_1:
+    Speaker: "Marc"
+    Text: "Detective! You're finally here..."
+    Choices:
+      - Text: "Yeah, what happened?"
+        NextNode: node_2
+      - Text: "..."
+        NextNode: node_2
+  node_2:
+    Speaker: "Marc"
+    Text: "This is 31-year-old Dr. Scott Baker, he was a professor at Crowinsbury University"
+    NextNode: node_3
+  node_3:
+    Speaker: "Marc"
+    Text: "He's married to Brooke Baker"
+    Choices:
+      - Text: "How'd he die?"
+        SetFlags:
+          - asked_how
+        NextNode: how
+      - Text: "When did he die?"
+        SetFlags:
+          - asked_when
+        NextNode: when
+      - Text: "Were there any witnesses?"
+        SetFlags:
+          - asked_witness
+        NextNode: witnesses
+  how:
+    Speaker: "Marc"
+    Text: "He was stabbed 3 times! Twice around the right collar bone—"
+    NextNode: how2
+  how2:
+    Speaker: "Marc"
+    Text: "and once in his left side. Nasty stuff..."
+    NextNode: check_asked
+  when:
+    Speaker: "Marc"
+    Text: "He was murdered some time around 10pm yesterday."
+    NextNode: check_asked
+  witnesses:
+    Speaker: "Marc"
+    Text: "Not quite, there was a group of teens outside when it happened—"
+    NextNode: witnesses2
+  witnesses2:
+    Speaker: "Marc"
+    Text: "they said they saw a young girl running out screaming around the same time."
+    NextNode: check_asked
+  check_asked:
+    CheckFlags:
+      - asked_how
+      - asked_when
+      - asked_witness
+    TrueNode: node_4
+    FalseNode: node_3
+  node_4:
+    Speaker: "You"
+    Text: "Alright I'll investigate and come back if anything turns up."

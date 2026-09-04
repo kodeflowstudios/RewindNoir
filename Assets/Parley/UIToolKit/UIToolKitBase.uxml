@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Parley/UIToolKit/UIToolKitBase.uss"/>
+    <ui:VisualElement name="mainContainer" style="background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="dialogueContainer">
+            <ui:VisualElement name="characterImage" style="position: relative; top: 61px; left: 1232px;"/>
+            <ui:VisualElement name="speakerNameBox" style="width: 461px;">
+                <ui:Label text="Label" name="speakerNameText"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="dialogueBox">
+                <ui:Label text="Label" name="dialogueText"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

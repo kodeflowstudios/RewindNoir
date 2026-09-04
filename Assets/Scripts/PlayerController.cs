@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Refs")]
 	[SerializeField] private Transform cameraTransform;
+	[SerializeField] private CinemachineInputAxisController camController;
 	[SerializeField] private InputActionReference moveAction;
 	[SerializeField] private InputActionReference jumpAction;
 	[SerializeField] private InputActionReference crouchAction;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
 	private CharacterController _characterController;
     private Vector2 _moveInput;
+    private bool _canMove;
     private bool _isGrounded;
 	private bool _isRunning;
 	private bool _isCrouching;
@@ -38,8 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
 	{
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
+		EnableMoving();
 		_characterController = GetComponent<CharacterController>();
 		_targetHeight = standingHeight;
 	}
@@ -64,11 +66,28 @@ public class PlayerController : MonoBehaviour
 		crouchAction.action.performed -= Crouch;
 	}
 
+	public void EnableMoving()
+	{
+		_canMove = true;
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+		camController.enabled = true;
+	}
+
+	public void DisableMoving()
+	{
+		_canMove = false;
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
+		camController.enabled = false;
+	}
+
     private void Update()
     {
 		_isGrounded = _characterController.isGrounded;
 
 		HandleGravity();
+		if (!_canMove) return;
 		HandleMovement();
 		HandleCrouchTransition();
     }
@@ -80,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
     private void Crouch(InputAction.CallbackContext context)
     {
+		if (!_canMove) return;
 		if (_isCrouching)
 		{
 			if (!CanStandUp()) return;
