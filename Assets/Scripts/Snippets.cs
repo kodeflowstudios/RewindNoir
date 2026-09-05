@@ -6,23 +6,25 @@ public class Snippets : MonoBehaviour
 {
 	ParleyYaml parleyYaml;
 	public GameObject textPrefab;
+	RectTransform canvasRect;
 
     void Start()
     {
+		canvasRect = GetComponent<RectTransform>();
 		parleyYaml = new ParleyYaml("Dialogues", "ScottVoiceSnippents");
 		InvokeRepeating("SpawnText", 5f, 9);
     }
 
 	void SpawnText()
 	{
-		Vector3 randomPoint = new(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.7f));
-		randomPoint.z = 10f;
-		Vector3 worldPoint = Camera.main.ViewportToWorldPoint(randomPoint);
+		float w = canvasRect.rect.width;
+		float h = canvasRect.rect.height;
+
+		Vector2 pos = new(Random.Range(-w/2.1f, w/2.1f), Random.Range(-h/2.1f, h/3f));
 
 		var txt = Instantiate(textPrefab, transform);
-		txt.transform.position = randomPoint;
+		txt.GetComponent<RectTransform>().localPosition = pos;
 		txt.GetComponent<TMP_Text>().text = parleyYaml.CurrentNode.Text;
-		parleyYaml.UnBindNextEvent();
 		parleyYaml.ProgressDialogue();
 	}
 }

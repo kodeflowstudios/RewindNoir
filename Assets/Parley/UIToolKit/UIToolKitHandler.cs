@@ -14,7 +14,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 namespace KodeFlowStudios.Parley
 {
@@ -112,7 +111,7 @@ namespace KodeFlowStudios.Parley
 			}
 		}
 
-		public void SetDialogueText(string text, bool typewrite)
+		public void SetDialogueText(string text, bool typewrite=false)
 		{
 			if (typewrite) 
 			{

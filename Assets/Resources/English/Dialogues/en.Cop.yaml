@@ -79,3 +79,19 @@ Dialogue:
   node_9:
     Speaker: "You"
     Text: "Alright I'll investigate and come back if anything turns up."
+
+  node_10:
+    Speaker: "Marc"
+    Text: "Who do you think did it?"
+    Choices:
+      - Text: "Anna"
+        NextNode: node_11
+      - Text: "Jacob"
+        NextNode: node_11
+      - Text: "Harrison"
+        NextNode: node_11
+      - Text: "I don't know..."
+        NextNode: node_11
+  node_11:
+    Speaker: "Marc"
+    Text: "I see..."

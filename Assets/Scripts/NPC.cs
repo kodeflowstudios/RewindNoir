@@ -42,7 +42,7 @@ public class NPC : MonoBehaviour
 		while (parleyYaml.ConversationEnded != true)
 		{
 			uiToolKitHandler.SetSpeakerNameText(parleyYaml.CurrentNode.Speaker);
-			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text, true);
+			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text);
 
 			var choices = parleyYaml.GetCurrentChoices();
 			if (choices.Count > 0)
