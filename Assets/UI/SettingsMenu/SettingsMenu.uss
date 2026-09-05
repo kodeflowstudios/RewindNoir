@@ -65,7 +65,7 @@ Button:focus {
 }
 
 .version-label {
-	font-size: 20px;
+	font-size: 35px;
 	color: navajowhite;
 	padding-right: 4px;
 	align-self: flex-end;
