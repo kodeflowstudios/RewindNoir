@@ -10,20 +10,27 @@
 //           rest of the examples can call without knowing UXML selectors.
 // ============================================================================
 
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 namespace KodeFlowStudios.Parley
 {
 	public class UIToolKitHandler : MonoBehaviour
 	{
+		struct RichChar
+		{
+			public char c;
+			public string color;
+		}
+
 		// Drop the scene's UIDocument onto this field in the Inspector.
 		[SerializeField] private UIDocument uiDocument;
 
 		VisualElement dialogueContainer;
-		Coroutine typingCoroutine;
+		Coroutine typewriteCoroutine;
 
 		void Awake()
 		{
@@ -42,6 +49,56 @@ namespace KodeFlowStudios.Parley
 			dialogueContainer.style.display = DisplayStyle.Flex;
 		}
 
+		public IEnumerator TypewriteRichText(Label label, string tagged, float charDelay = 0.05f)
+		{
+			var chars = new List<RichChar>();
+			string currentColor = null;
+			int i = 0;
+
+			while (i < tagged.Length)
+			{
+				if (tagged[i] == '<')
+				{
+					int close = tagged.IndexOf('>', i);
+					if (close != -1)
+					{
+						string tag = tagged.Substring(i, close - i + 1);
+						if (tag.StartsWith("<color="))  currentColor = tag[7..^1];
+						else if (tag == "</color>")     currentColor = null;
+						i = close + 1;
+						continue;
+					}
+				}
+				chars.Add(new RichChar { c = tagged[i++], color = currentColor });
+			}
+
+			var sb = new System.Text.StringBuilder();
+			for (int count = 0; count <= chars.Count; count++)
+			{
+				sb.Clear();
+				for (i = 0; i < chars.Count; i++)
+				{
+					RichChar rc = chars[i];
+					bool hidden = i >= count;
+
+					if (hidden)
+					{
+						string hiddenColor = rc.color != null ? rc.color + "00" : "#00000000";
+						sb.Append($"<color={hiddenColor}>{rc.c}</color>");
+					}
+					else
+					{
+						if (rc.color != null) sb.Append($"<color={rc.color}>");
+						sb.Append(rc.c);
+						if (rc.color != null) sb.Append("</color>");
+					}
+				}
+
+				label.text = sb.ToString();
+				if (count < chars.Count) yield return new WaitForSeconds(charDelay);
+			}
+		}
+
 		/// <summary>
 		/// Sets the speaker name box. Passing an empty string hides the box entirely
 		/// </summary>
@@ -55,9 +112,14 @@ namespace KodeFlowStudios.Parley
 			}
 		}
 
-		public void SetDialogueText(string text)
+		public void SetDialogueText(string text, bool typewrite)
 		{
-			dialogueContainer.Q<VisualElement>("dialogueBox").Q<Label>("dialogueText").text = text;
+			if (typewrite) 
+			{
+				if (typewriteCoroutine != null) StopCoroutine(typewriteCoroutine);
+				typewriteCoroutine = StartCoroutine(TypewriteRichText(dialogueContainer.Q<VisualElement>("dialogueBox").Q<Label>("dialogueText"), text));
+			}
+			else dialogueContainer.Q<VisualElement>("dialogueBox").Q<Label>("dialogueText").text = text;
 		}
 
 		/// <summary>Swaps the character pic. Pass <c>null</c> to clear it.</summary>

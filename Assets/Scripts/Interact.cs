@@ -21,12 +21,9 @@ public class Interact : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-		Debug.Log("Pressed");
         if (Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out RaycastHit hit, 10f, hitMask))
         {
-			Debug.Log(hit.collider.gameObject.name);
 			hit.collider.gameObject.GetComponent<NPC>().StartDialogue();
-			Debug.Log("Started");
         }
     }
 }

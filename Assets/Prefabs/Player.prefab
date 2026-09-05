@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4838171786485255785}
   - component: {fileID: 5721179864651623193}
   - component: {fileID: 4499979952208774221}
+  - component: {fileID: 8872407020823012270}
+  - component: {fileID: 3483611209279855530}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -75,17 +77,49 @@ MonoBehaviour:
   runSpeed: 8
   crouchSpeed: 2
   jumpForce: 0
-  gravity: -12
+  gravity: -16
   initalFallVelocity: -2
   standingHeight: 2
   crouchingHeight: 1
   crouchingTransitionSpeed: 10
   cameraOffset: 0.4
   cameraTransform: {fileID: 5004827506422429206}
+  camController: {fileID: 2426238389014363999}
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   crouchAction: {fileID: 7040659881675835329, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &8872407020823012270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526628891832277928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ec35e917deb4328aec053d6b362c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interact
+  cam: {fileID: 5004827506422429206}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 8
+  interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &3483611209279855530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526628891832277928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f5092e09d9840e2988afa8b777f3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entropy
+  inVoid: 0
+  entropyAction: {fileID: 4040239814442953749, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5906971688951585777
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +169,7 @@ MonoBehaviour:
   Priority:
     Enabled: 0
     m_Value: 0
-  OutputChannel: 1
+  OutputChannel: -1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0

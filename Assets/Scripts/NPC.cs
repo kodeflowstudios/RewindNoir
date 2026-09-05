@@ -1,17 +1,20 @@
 using UnityEngine;
-using UnityEngine.Animations;
 using KodeFlowStudios.Parley.YamlCore;
 using KodeFlowStudios.Parley;
+using UnityEngine.InputSystem;
 
 public class NPC : MonoBehaviour
 {
 	public Transform player;
 	public ObjectiveUpdater obu;
 	public UIToolKitHandler uiToolKitHandler;
+	ParleyYaml parleyYaml;
+	bool _hasTalked = false;
 
 	void Start()
 	{
 		uiToolKitHandler.HideElements();
+		parleyYaml = new ParleyYaml("Dialogues", "Cop");
 	}
 
 	void LookAtPlayer()
@@ -26,14 +29,20 @@ public class NPC : MonoBehaviour
 		LookAtPlayer();
 		var pc = player.GetComponent<PlayerController>();
 		pc.DisableMoving();
-		ParleyYaml parleyYaml = new ParleyYaml("Dialogues", "Cop");
+
+		if (_hasTalked)
+		{
+			parleyYaml.ConversationEnded = false;
+			parleyYaml.BindNextEvent(new InputAction("NextDialogue", binding: "<Mouse>/leftButton"));
+			parleyYaml.ProgressDialogue("node_3");
+		}
 
 		uiToolKitHandler.ShowElements();
 
 		while (parleyYaml.ConversationEnded != true)
 		{
 			uiToolKitHandler.SetSpeakerNameText(parleyYaml.CurrentNode.Speaker);
-			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text);
+			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text, true);
 
 			var choices = parleyYaml.GetCurrentChoices();
 			if (choices.Count > 0)
@@ -53,9 +62,13 @@ public class NPC : MonoBehaviour
 			else await parleyYaml.OnNextDialogue;
 		}
 
+		if (!_hasTalked)
+		{
+			obu.UpdateObjectives();
+			_hasTalked = true;
+		}
+
 		pc.EnableMoving();
 		uiToolKitHandler.HideElements();
-		parleyYaml = null;
-		obu.UpdateObjectives();
 	}
 }
