@@ -20,7 +20,7 @@ public class Snippets : MonoBehaviour
 		float w = canvasRect.rect.width;
 		float h = canvasRect.rect.height;
 
-		Vector2 pos = new(Random.Range(-w/2.1f, w/2.1f), Random.Range(-h/2.1f, h/3f));
+		Vector2 pos = new(Random.Range(-w/2.8f, w/2.8f), Random.Range(-h/2.2f, h/3f));
 
 		var txt = Instantiate(textPrefab, transform);
 		txt.GetComponent<RectTransform>().localPosition = pos;

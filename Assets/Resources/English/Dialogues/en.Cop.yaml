@@ -77,6 +77,10 @@ Dialogue:
     Text: "Harrison Hancock, a 42-year-old Microbiologist. The brother of Brooke Baker. He returned from his home visit yesterday but has denied any connection to the incident."
     NextNode: node_9
   node_9:
+    Speaker: "Marc"
+    Text: "He called the victim 3 hours prior."
+    NextNode: end
+  end:
     Speaker: "You"
     Text: "Alright I'll investigate and come back if anything turns up."
 
@@ -89,6 +93,8 @@ Dialogue:
       - Text: "Jacob"
         NextNode: node_11
       - Text: "Harrison"
+        SetFlags:
+          - guessed_right
         NextNode: node_11
       - Text: "I don't know..."
         NextNode: node_11

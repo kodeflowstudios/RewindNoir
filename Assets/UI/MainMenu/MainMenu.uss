@@ -1,6 +1,10 @@
+* {
+	-unity-font-definition: url(/Assets/BebasNeue-Regular.ttf);
+}
+
 .main-container {
 	padding-left: 3%;
-	background-color: grey;
+	background-image: url("/Assets/CarMainMenu.png");
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
@@ -8,22 +12,25 @@
 
 .title {
 	color: darkred;
-	font-size: 90px;
+	margin-top: 1%;
+	font-size: 135px;
 	-unity-font-style: bold;
 }
 
 .buttons-container {
-	align-items: flex-start;
+	align-items: flex-end;
 	width: 100%;
+	padding-right: 2%;
 	height: auto;
-	padding-top: 5%;
+	padding-top: 2%;
 	flex-grow: 1;
 }
 
 Button {
-	font-size: 55px;
-	width: 40%;
-	height: 25%;
+	padding: 3%;
+	font-size: 50px;
+	width: 33%;
+	height: 16%;
 	margin-bottom: 30px;
 }
 
@@ -33,6 +40,7 @@ Button:focus {
 
 .version-label {
 	font-size: 20px;
+	color: navajowhite;
 	padding-right: 4px;
 	align-self: flex-end;
 	-unity-font-style: bold;

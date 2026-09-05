@@ -11,6 +11,7 @@
         <ui:Label text="Rewind Noir" class="title" name="label_title"/>
         <ui:VisualElement class="buttons-container">
             <ui:Button text="Play" name="button_play"/>
+            <ui:Button text="Settings" name="button_settings"/>
             <ui:Button text="Quit" name="button_quit"/>
         </ui:VisualElement>
 		<ui:Label text="prototype build" class="version-label"/>

@@ -1,0 +1,73 @@
+* {
+	-unity-font-definition: url(/Assets/BebasNeue-Regular.ttf);
+}
+
+.main-container {
+	padding-left: 2%;
+	background-image: url("/Assets/CarMainMenu.png");
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+}
+
+.title {
+	color: darkred;
+	font-size: 135px;
+	-unity-font-definition: url(/Assets/BebasNeue-Regular.ttf);
+}
+
+.settings-container {
+	align-items: flex-end;
+	width: 100%;
+	padding-right: 2%;
+	height: auto;
+	padding-top: 10%;
+}
+
+Slider {
+	width: 33%;
+	font-size: 36px;
+	color: navajowhite;
+}
+
+Slider > Label {
+	margin-right: 0;
+}
+
+DropdownField {
+	width: 33%;
+	font-size: 36px;
+	color: navajowhite;
+}
+
+DropdownField > Label {
+	margin-right: 0;
+}
+
+.settings-footer {
+	margin-top: auto;
+	width: 100%;
+	align-self: flex-start;
+	flex-direction: row;
+}
+
+Button {
+	font-size: 38px;
+	width: 18%;
+	height: auto;
+	margin-bottom: 1%;
+	margin-right: auto;
+}
+
+Button:focus {
+	border-color: transparent;
+}
+
+.version-label {
+	font-size: 20px;
+	color: navajowhite;
+	padding-right: 4px;
+	align-self: flex-end;
+	-unity-font-style: bold;
+}

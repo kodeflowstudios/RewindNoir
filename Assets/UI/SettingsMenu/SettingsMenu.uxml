@@ -1,0 +1,21 @@
+<ui:UXML 
+  xmlns:ui="UnityEngine.UIElements" 
+  xmlns:uie="UnityEditor.UIElements" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  engine="UnityEngine.UIElements" 
+  editor="UnityEditor.UIElements" 
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd" 
+  editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/SettingsMenu/SettingsMenu.uss"/>
+    <ui:VisualElement class="main-container" name="Main">
+        <ui:Label text="Settings" class="title" name="label_settings"/>
+        <ui:VisualElement class="settings-container">
+			<ui:Slider label="Sensitivity" name="slider_sens"/>
+			<ui:DropdownField label="Language" name="dropdown_lang"/>
+        </ui:VisualElement>
+			<ui:VisualElement class="settings-footer">
+				<ui:Button text="Back" name="button_back"/>
+				<ui:Label text="prototype build" class="version-label"/>
+			</ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -3,10 +3,7 @@ MetaData:
   TextDirection: LTR
 Dialogue:
   first:
-    Text: "Talk to Officer Marc"
+    Text: "Look for officer Marc and talk to him"
     NextNode: second
   second:
-    Text: "Investigate the scene"
-    NextNode: third
-  third:
-    Text: "Head back"
+    Text: "Press (R) to traverse the Entropy"

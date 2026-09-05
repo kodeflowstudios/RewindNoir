@@ -34,7 +34,7 @@ public class NPC : MonoBehaviour
 		{
 			parleyYaml.ConversationEnded = false;
 			parleyYaml.BindNextEvent(new InputAction("NextDialogue", binding: "<Mouse>/leftButton"));
-			parleyYaml.ProgressDialogue("node_3");
+			parleyYaml.ProgressDialogue("node_10");
 		}
 
 		uiToolKitHandler.ShowElements();
