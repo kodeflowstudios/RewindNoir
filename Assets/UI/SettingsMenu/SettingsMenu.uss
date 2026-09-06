@@ -31,6 +31,10 @@ Slider {
 	color: navajowhite;
 }
 
+Slider:focus > Label {
+	color: navajowhite;
+}
+
 Slider > Label {
 	margin-right: 0;
 }
@@ -38,10 +42,11 @@ Slider > Label {
 DropdownField {
 	width: 33%;
 	font-size: 36px;
-	color: navajowhite;
+	color: black;
 }
 
 DropdownField > Label {
+	color: navajowhite;
 	margin-right: 0;
 }
 

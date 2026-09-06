@@ -1,0 +1,17 @@
+<ui:UXML 
+  xmlns:ui="UnityEngine.UIElements" 
+  xmlns:uie="UnityEditor.UIElements" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  engine="UnityEngine.UIElements" 
+  editor="UnityEditor.UIElements" 
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd" 
+  editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ResultScreen/ResultScreen.uss"/>
+    <ui:VisualElement class="main-container" name="Main">
+        <ui:Label text="You Won" class="title" name="label_result"/>
+        <ui:VisualElement class="buttons-container">
+            <ui:Button text="Return to Menu" name="button_main_menu"/>
+            <ui:Button text="Quit" name="button_quit"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

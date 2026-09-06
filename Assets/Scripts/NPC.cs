@@ -1,20 +1,24 @@
 using UnityEngine;
-using KodeFlowStudios.Parley.YamlCore;
 using KodeFlowStudios.Parley;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+using KodeFlowStudios.Parley.YamlCore;
 
 public class NPC : MonoBehaviour
 {
 	public Transform player;
+	PlayerController pc;
 	public ObjectiveUpdater obu;
 	public UIToolKitHandler uiToolKitHandler;
+	public UIDocument resultScreen;
 	ParleyYaml parleyYaml;
-	bool _hasTalked = false;
 
 	void Start()
 	{
 		uiToolKitHandler.HideElements();
-		parleyYaml = new ParleyYaml("Dialogues", "Cop");
+		resultScreen.rootVisualElement.style.display = DisplayStyle.None;
+		parleyYaml = GameManager.Instance?.parleyYaml;
+		pc = player.GetComponent<PlayerController>();
 	}
 
 	void LookAtPlayer()
@@ -27,10 +31,9 @@ public class NPC : MonoBehaviour
 	async public void StartDialogue()
 	{
 		LookAtPlayer();
-		var pc = player.GetComponent<PlayerController>();
 		pc.DisableMoving();
 
-		if (_hasTalked)
+		if (GameManager.Instance.hasTalked)
 		{
 			parleyYaml.ConversationEnded = false;
 			parleyYaml.BindNextEvent(new InputAction("NextDialogue", binding: "<Mouse>/leftButton"));
@@ -62,13 +65,26 @@ public class NPC : MonoBehaviour
 			else await parleyYaml.OnNextDialogue;
 		}
 
-		if (!_hasTalked)
+		if (!GameManager.Instance.hasTalked)
 		{
 			obu.UpdateObjectives();
-			_hasTalked = true;
+			GameManager.Instance.hasTalked = true;
 		}
 
 		pc.EnableMoving();
 		uiToolKitHandler.HideElements();
+
+		if (parleyYaml.Flags.IsFlagSet("has_won"))
+		{
+			resultScreen.rootVisualElement.style.display = DisplayStyle.Flex;
+			resultScreen.GetComponent<ResultScreen>().ShowResult("You Win!", Color.green);
+			pc.DisableMoving();
+		}
+		else if (parleyYaml.Flags.IsFlagSet("has_lost"))
+		{
+			resultScreen.rootVisualElement.style.display = DisplayStyle.Flex;
+			resultScreen.GetComponent<ResultScreen>().ShowResult("You Lose...", Color.red);
+			pc.DisableMoving();
+		}
 	}
 }

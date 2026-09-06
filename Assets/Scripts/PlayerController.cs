@@ -42,10 +42,15 @@ public class PlayerController : MonoBehaviour
     private void Awake()
 	{
 		EnableMoving();
+		UpdateSensitivity();
 
 		_characterController = GetComponent<CharacterController>();
 		_targetHeight = standingHeight;
 
+	}
+
+	public void UpdateSensitivity()
+	{
 		float _sensitivity = PlayerPrefs.GetFloat("Sensitivity", 1);
 
 		foreach (var c in camController.Controllers)
@@ -57,7 +62,7 @@ public class PlayerController : MonoBehaviour
 			}
 			if (c.Name == "Look Y (Tilt)")
 			{
-				c.Input.Gain = _sensitivity;
+				c.Input.Gain = -_sensitivity;
 			}
 		}
 	}

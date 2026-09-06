@@ -11,7 +11,7 @@
 }
 
 .title {
-	color: darkred;
+	color: white;
 	margin-top: 1%;
 	font-size: 135px;
 	-unity-font-style: bold;
@@ -22,7 +22,7 @@
 	width: 100%;
 	padding-right: 2%;
 	height: auto;
-	padding-top: 7%;
+	padding-top: 10%;
 	flex-grow: 1;
 }
 

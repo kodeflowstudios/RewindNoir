@@ -5,30 +5,38 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
 	public UIDocument settingsMenu;
-	private UIDocument _mainMenu;
+	private VisualElement _root;
 
     void Start()
     {
-		_mainMenu = GetComponent<UIDocument>();
-		var root = _mainMenu.rootVisualElement;
+		if (SettingsMenu.Instance.mainMenu == null) SettingsMenu.Instance.mainMenu = GetComponent<UIDocument>();
 
-		var playButton = root.Q<Button>("button_play");
+		settingsMenu.rootVisualElement.style.display = DisplayStyle.None;
+
+		_root = GetComponent<UIDocument>().rootVisualElement;
+
+		var playButton = _root.Q<Button>("button_play");
 		playButton.clickable.clicked += () =>
 		{
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene(1);
 		};
 
-		var settingsButton = root.Q<Button>("button_settings");
+		var settingsButton = _root.Q<Button>("button_settings");
 		settingsButton.clickable.clicked += () =>
 		{
-			settingsMenu.enabled = true;
-			_mainMenu.enabled = false;
+			settingsMenu.rootVisualElement.style.display = DisplayStyle.Flex;
 		};
 
-		var quitButton = root.Q<Button>("button_quit");
+		var quitButton = _root.Q<Button>("button_quit");
 		quitButton.clickable.clicked += () =>
 		{
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+			Application.OpenURL(webplayerQuitURL);
+#else
 			Application.Quit();
+#endif
 		};
     }
 }

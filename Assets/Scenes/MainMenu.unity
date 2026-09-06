@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 11400000, guid: 5a006fffe3fd74f1fb5f0d448fbf0b7c, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: c5a4169573af846c8b26c957cc4193f2, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 6df8f760f3efc4d3a9501c6449a9ad25, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsMenu
   mainMenu: {fileID: 2027372325}
+  pauseAction: {fileID: -2993571388987686591, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &701116556
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,10 +626,10 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 11400000, guid: 5a006fffe3fd74f1fb5f0d448fbf0b7c, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: c5a4169573af846c8b26c957cc4193f2, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 477a19231fde04631ada005fce3d81d3, type: 3}
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920

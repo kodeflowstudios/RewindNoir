@@ -1,4 +1,5 @@
 using System.Collections;
+using KodeFlowStudios.Parley.YamlCore;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
+	public bool hasTalked = false;
 
 	public float _duration = 0.5f;
 	public float _fovMin = 60f;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 	public CinemachineCamera cineCamB;
 	public Image fade;
 	public AnimationCurve animationCurve;
+	public ParleyYaml parleyYaml;
 
 	void Awake()
 	{
@@ -40,6 +43,18 @@ public class GameManager : MonoBehaviour
 			Destroy(this);
 		}
 		DontDestroyOnLoad(this);
+	}
+
+	void Start()
+	{
+		parleyYaml = new ParleyYaml("Dialogues", "Cop");
+	}
+
+	public PlayerController GetPlayer()
+	{
+		if (playerA != null) return playerA.GetComponent<PlayerController>();
+		if (playerB != null) return playerB.GetComponent<PlayerController>();
+		return null;
 	}
 
 	public void TransitionToNormal()

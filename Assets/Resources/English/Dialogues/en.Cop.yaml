@@ -89,12 +89,16 @@ Dialogue:
     Text: "Who do you think did it?"
     Choices:
       - Text: "Anna"
+        SetFlags:
+          - has_lost
         NextNode: node_11
       - Text: "Jacob"
+        SetFlags:
+          - has_lost
         NextNode: node_11
       - Text: "Harrison"
         SetFlags:
-          - guessed_right
+          - has_won
         NextNode: node_11
       - Text: "I don't know..."
         NextNode: node_11

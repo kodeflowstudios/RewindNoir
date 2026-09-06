@@ -9,13 +9,13 @@
     <Style src="project://database/Assets/UI/SettingsMenu/SettingsMenu.uss"/>
     <ui:VisualElement class="main-container" name="Main">
         <ui:Label text="Settings" class="title" name="label_settings"/>
-        <ui:VisualElement class="settings-container">
-			<ui:Slider label="Sensitivity" name="slider_sens"/>
+        <ui:VisualElement class="settings-container" name="settings_container">
+			<ui:Slider label="Sensitivity" name="slider_sens" low-value="0.2" high-value="10"/>
 			<ui:DropdownField label="Language" name="dropdown_lang"/>
         </ui:VisualElement>
-			<ui:VisualElement class="settings-footer">
-				<ui:Button text="Back" name="button_back"/>
-				<ui:Label text="prototype build" class="version-label"/>
-			</ui:VisualElement>
+		<ui:VisualElement class="settings-footer">
+			<ui:Button text="Back" name="button_back"/>
+			<ui:Label text="prototype build" class="version-label"/>
+		</ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
