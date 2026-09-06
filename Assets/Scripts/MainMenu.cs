@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 		var playButton = _root.Q<Button>("button_play");
 		playButton.clickable.clicked += () =>
 		{
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(2);
 		};
 
 		var settingsButton = _root.Q<Button>("button_settings");

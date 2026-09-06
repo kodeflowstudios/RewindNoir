@@ -56,7 +56,6 @@ public class SettingsMenu : MonoBehaviour
 
 		var sensSlider = _root.Q<VisualElement>("settings_container").Q<Slider>("slider_sens");
 		sensSlider.value = PlayerPrefs.GetFloat("Sensitivity", 1f);
-		Debug.Log(sensSlider.value);
 		sensSlider.RegisterCallback<ChangeEvent<float>>((evt) =>
 		{
 			PlayerPrefs.SetFloat("Sensitivity", evt.newValue);

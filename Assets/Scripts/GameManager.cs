@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(1);
+		SceneManager.LoadScene(2);
 
 		while (!playerA) yield return new WaitForEndOfFrame();
 
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(2);
+		SceneManager.LoadScene(3);
 
 		while (!playerB) yield return new WaitForEndOfFrame();
 		var charCont = playerB.GetComponent<CharacterController>();
