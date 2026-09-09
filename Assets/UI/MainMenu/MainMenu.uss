@@ -1,10 +1,10 @@
 * {
-	-unity-font-definition: url(/Assets/BebasNeue-Regular.ttf);
+	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
 }
 
 .main-container {
 	padding-left: 3%;
-	background-image: url("/Assets/CarMainMenu.png");
+	background-image: url("/Assets/Images/CarMainMenu.png");
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
