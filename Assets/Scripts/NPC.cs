@@ -54,10 +54,10 @@ public class NPC : MonoBehaviour
 				{
 					int choiceIndex = x;
 					uiToolKitHandler.AddChoiceButton(x, parleyYaml.CurrentNode.Choices[x].Text, () =>
-							{
-								parleyYaml.ChoiceMade(choiceIndex);
-								uiToolKitHandler.ClearChoiceButtons();
-							});
+					{
+						parleyYaml.ChoiceMade(choiceIndex);
+						uiToolKitHandler.ClearChoiceButtons();
+					});
 				}
 
 				await parleyYaml.GetPlayerChoice();
