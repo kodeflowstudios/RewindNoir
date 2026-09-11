@@ -21,9 +21,10 @@ public class Interact : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
+		if (GameManager.Instance.inDialogue) return;
         if (Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out RaycastHit hit, 10f, hitMask))
         {
-			hit.collider.gameObject.GetComponent<NPC>().StartDialogue();
+			hit.collider.gameObject.GetComponent<DialogueHandler>().StartDialogue();
         }
     }
 }

@@ -7,7 +7,7 @@
   noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd" 
   editor-extension-mode="False">
     <Style src="project://database/Assets/UI/ResultScreen/ResultScreen.uss"/>
-    <ui:VisualElement class="main-container" name="Main">
+    <ui:VisualElement class="main-container" name="Results">
         <ui:Label text="You Won" class="title" name="label_result"/>
         <ui:VisualElement class="buttons-container">
             <ui:Button text="Return to Menu" name="button_main_menu"/>

@@ -12,14 +12,16 @@ public class ObjectiveUpdater : MonoBehaviour
 
 	void Start()
 	{
-		// parleyYaml = new ParleyYaml("Misc", "Objectives", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("lang")));
-		parleyYaml = new ParleyYaml("Misc", "Objectives");
+		GameManager.Instance.obu = this;
+		parleyYaml = GameManager.Instance.objectivesDialogue;
 		parleyYaml.UnBindNextEvent();
-		UpdateObjectives();
+		UpdateObjective();
 	}
 
-	public void UpdateObjectives()
+	public void UpdateObjective(string objective_name="")
 	{
+		if (!string.IsNullOrEmpty(objective_name)) parleyYaml.ProgressDialogue(objective_name); 
+
 		if (parleyYaml.Meta.TextDirection == TextDirection.LTR)
 		{
 			ltrObjectiveText.text = parleyYaml.CurrentNode.Text;
@@ -34,5 +36,17 @@ public class ObjectiveUpdater : MonoBehaviour
 		parleyYaml.ProgressDialogue();
 
 		if (parleyYaml.ConversationEnded) parleyYaml = null;
+	}
+
+	public void HideObjective()
+	{
+		ltrObjectiveText.enabled = false;
+		rtlObjectiveText.enabled = false;
+	}
+
+	public void ShowObjective()
+	{
+		ltrObjectiveText.enabled = true;
+		rtlObjectiveText.enabled = true;
 	}
 }

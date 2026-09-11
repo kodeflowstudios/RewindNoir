@@ -2,6 +2,10 @@
 	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
 }
 
+#SettingsMenu-container {
+	display: none;
+}
+
 .main-container {
 	padding-left: 2%;
 	background-image: url("/Assets/Images/CarMainMenu.png");

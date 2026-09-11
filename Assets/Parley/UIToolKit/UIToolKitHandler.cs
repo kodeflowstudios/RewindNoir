@@ -163,6 +163,15 @@ namespace KodeFlowStudios.Parley
 			choiceButton.clicked += action;
 			choiceButton.AddToClassList("dialogue-choice");
 
+			// Block ALL pointer interaction (not just click) until the mouse
+			// that spawned this button has actually been released.
+			choiceButton.pickingMode = PickingMode.Ignore;
+			choiceButton.schedule.Execute(() =>
+			{
+				if (!UnityEngine.InputSystem.Mouse.current.leftButton.isPressed)
+					choiceButton.pickingMode = PickingMode.Position;
+			}).Every(16).Until(() => choiceButton.pickingMode == PickingMode.Position);
+
 			dialogueContainer.Add(choiceButton);
 
 			return choiceButton;

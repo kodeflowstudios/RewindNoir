@@ -4,12 +4,17 @@
 	-unity-font-definition: url(/Assets/Fonts/Kalam-Regular.ttf);
 }
 
+#Notepad-container {
+	display: none;
+}
+
 .frame {
-	padding: 125px 65px 52px 65px;
 	width: 700px;
 	height: 1200px;
-	background-image: url(/Assets/Images/hobgoblin_tech-paper-7098788.png);
 	flex-direction: column;
+	padding: 125px 65px 52px 65px;
+	align-self: center;
+	background-image: url(/Assets/Images/hobgoblin_tech-paper-7098788.png);
 }
 
 .header {

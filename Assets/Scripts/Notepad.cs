@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Notepad : MonoBehaviour
 {
-	public bool canShow = true;
+	public PlayerController playerController;
 	public InputActionReference toggleAction;
 	public AudioClip noteBookUpSFX;
 	public AudioClip noteBookDownSFX;
@@ -47,7 +47,8 @@ public class Notepad : MonoBehaviour
 			RefreshPage();
 		};
 
-		_root.style.display = DisplayStyle.None;
+		RefreshButtons();
+
 		_audioSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -56,7 +57,9 @@ public class Notepad : MonoBehaviour
 
     private void Toggle(InputAction.CallbackContext context)
     {
-		if (!canShow) return;
+		if (!GameManager.Instance.canShowNotepad) return;
+		if (SettingsMenu.Instance.isPaused) return;
+
 		if (!_isShown) StartSlideUp();
 		else StartSlideDown();
 	}
@@ -68,6 +71,13 @@ public class Notepad : MonoBehaviour
 
 	IEnumerator SlideUp()
 	{
+		playerController.DisableMoving();
+
+		_audioSource.clip = noteBookUpSFX;
+		_audioSource.Play();
+
+		SettingsMenu.Instance.notePadOpen = true;
+
 		_root.style.display = DisplayStyle.Flex;
 
 		float timeElapsed = 0;
@@ -87,8 +97,13 @@ public class Notepad : MonoBehaviour
 		_root.style.marginTop = 0;
 
 		_isShown = true;
-		_audioSource.clip = noteBookUpSFX;
-		_audioSource.Play();
+
+		if (!GameManager.Instance.hasOpenedNotepad)
+		{
+			GameManager.Instance.obu.HideObjective();
+			GameManager.Instance.obu.UpdateObjective();
+			GameManager.Instance.hasOpenedNotepad = true;
+		}
 	}
 
 	void StartSlideDown()
@@ -98,6 +113,8 @@ public class Notepad : MonoBehaviour
 
 	IEnumerator SlideDown()
 	{
+		playerController.EnableMoving();
+
 		float timeElapsed = 0;
 
 		while (timeElapsed < _slideDuration)
@@ -120,6 +137,10 @@ public class Notepad : MonoBehaviour
 		_isShown = false;
 		_audioSource.clip = noteBookDownSFX;
 		_audioSource.Play();
+
+		GameManager.Instance.obu.ShowObjective();
+
+		SettingsMenu.Instance.notePadOpen = false;
 	}
 
 	void RefreshPage()
@@ -138,10 +159,15 @@ public class Notepad : MonoBehaviour
 
 		_pageDisplay.text = $"({_currentPage}/{_totalPages})";
 
-		_prevButton.SetEnabled(_currentPage > 1);
-		_nextButton.SetEnabled(_currentPage < _totalPages);
+		RefreshButtons();
 
 		_audioSource.clip = pageTurnSFX[Random.Range(0, pageTurnSFX.Count)];
 		_audioSource.Play();
+	}
+
+	void RefreshButtons()
+	{
+		_prevButton.SetEnabled(_currentPage > 1);
+		_nextButton.SetEnabled(_currentPage < _totalPages);
 	}
 }
