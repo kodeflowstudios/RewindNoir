@@ -11,8 +11,6 @@ public class ResultScreen : MonoBehaviour
     {
 		_root = GetComponent<UIDocument>().rootVisualElement;
 
-		_root.style.display = DisplayStyle.None;
-
 		resultLabel = _root.Q<Label>("label_result");
 
 		var menuButton = _root.Q<Button>("button_main_menu");

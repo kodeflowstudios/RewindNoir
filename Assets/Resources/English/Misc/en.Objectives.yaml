@@ -2,8 +2,14 @@ MetaData:
   Language: English
   TextDirection: LTR
 Dialogue:
-  first:
-    Text: "Look for officer Marc and talk to him"
-    NextNode: second
-  second:
-    Text: "Press (R) to traverse the Entropy"
+  talk_to_marc:
+    Text: "Look for Officer Marc and talk to him"
+    NextNode: notepad_tutorial
+  notepad_tutorial:
+    Text: "Notes updated, press (TAB) to view"
+    NextNode: entropy_tutorial
+  entropy_tutorial:
+    Text: "Press (R) to step into the void"
+    NextNode: fin
+  fin:
+    Text: "Investigate and report back to Officer Marc"

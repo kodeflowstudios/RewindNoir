@@ -42,6 +42,7 @@
     color: rgb(227, 227, 227);
     font-size: 300%;
     -unity-text-align: middle-center;
+		-unity-font-definition: url(/Assets/Fonts/SEASRN.ttf);
 }
 
 #dialogueBox {
@@ -59,6 +60,7 @@
     color: rgb(227, 227, 227);
     font-size: 260%;
     white-space: normal;
+		-unity-font-definition: url(/Assets/Fonts/Bellerose.ttf);
 }
 
 .dialogue-choice {

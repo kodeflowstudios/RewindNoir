@@ -1,4 +1,5 @@
 using System.Collections;
+using KodeFlowStudios.Parley.Localization;
 using KodeFlowStudios.Parley.YamlCore;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -8,7 +9,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
+
+	public bool canShowNotepad = false;
 	public bool hasTalked = false;
+	public bool inDialogue = false;
+	public bool enteredEntropy = false;
+	public bool hasOpenedNotepad = false;
 
 	public float _duration = 0.5f;
 	public float _fovMin = 60f;
@@ -20,6 +26,7 @@ public class GameManager : MonoBehaviour
 	public Vector3 positionB;
 	public Quaternion camRotationA;
 	public Quaternion camRotationB;
+	public ObjectiveUpdater obu;
 	public CinemachinePanTilt cinePanTiltA;
 	public CinemachinePanTilt cinePanTiltB;
 	public InputAxis cineCamAPan;
@@ -30,7 +37,8 @@ public class GameManager : MonoBehaviour
 	public CinemachineCamera cineCamB;
 	public Image fade;
 	public AnimationCurve animationCurve;
-	public ParleyYaml parleyYaml;
+	public ParleyYaml npcDialogue;
+	public ParleyYaml objectivesDialogue;
 
 	void Awake()
 	{
@@ -43,11 +51,9 @@ public class GameManager : MonoBehaviour
 			Destroy(this);
 		}
 		DontDestroyOnLoad(this);
-	}
 
-	void Start()
-	{
-		parleyYaml = new ParleyYaml("Dialogues", "Cop");
+		npcDialogue = new ParleyYaml("Dialogues", "Cop", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
+		objectivesDialogue = new ParleyYaml("Misc", "Objectives", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
 	}
 
 	public PlayerController GetPlayer()
@@ -64,6 +70,8 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToNormalEnumerator()
 	{
+		obu.HideObjective();
+
 		positionB = playerB.transform.position;
 		cineCamBPan = cinePanTiltB.PanAxis;
 		cineCamBTilt = cinePanTiltB.TiltAxis;
@@ -123,6 +131,8 @@ public class GameManager : MonoBehaviour
 		cineCamA.Lens.FieldOfView = _fovMin;
 		c.a = 0;
 		fade.color = c;
+
+		obu.ShowObjective();
 	}
 
 	public void TransitionToVoid()
@@ -132,6 +142,8 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToVoidEnumerator()
 	{
+		obu.HideObjective();
+
 		positionA = playerA.transform.position;
 		cineCamAPan = cinePanTiltA.PanAxis;
 		cineCamATilt = cinePanTiltA.TiltAxis;
@@ -158,6 +170,13 @@ public class GameManager : MonoBehaviour
 		fade.color = c;
 
 		SceneManager.LoadScene(3);
+
+		if (!enteredEntropy)
+		{
+			obu.UpdateObjective("entropy_tutorial");
+			obu.UpdateObjective();
+			enteredEntropy = true;
+		}
 
 		while (!playerB) yield return new WaitForEndOfFrame();
 		var charCont = playerB.GetComponent<CharacterController>();
@@ -190,5 +209,7 @@ public class GameManager : MonoBehaviour
 		cineCamB.Lens.FieldOfView = _fovMin;
 		c.a = 0;
 		fade.color = c;
+
+		obu.ShowObjective();
 	}
 }

@@ -6,6 +6,8 @@ public class SettingsMenu : MonoBehaviour
 {
 	public UIDocument mainMenu;
 	private VisualElement _root;
+	public bool isPaused;
+	public bool notePadOpen;
 	public InputActionReference pauseAction;
 
 	public static SettingsMenu Instance;
@@ -35,15 +37,19 @@ public class SettingsMenu : MonoBehaviour
 
     private void Pause(InputAction.CallbackContext context)
     {
+		if (notePadOpen) return;
 		if (mainMenu != null) return;
+		if (GameManager.Instance.inDialogue) return;
 		
 		if (_root.style.display == DisplayStyle.None)
 		{
+			isPaused = true;
 			_root.style.display = DisplayStyle.Flex;
 			GameManager.Instance?.GetPlayer()?.DisableMoving();
 		}
 		else
 		{
+			isPaused = false;
 			_root.style.display = DisplayStyle.None;
 			GameManager.Instance?.GetPlayer()?.EnableMoving();
 			GameManager.Instance?.GetPlayer()?.UpdateSensitivity();
