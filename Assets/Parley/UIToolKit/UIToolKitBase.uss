@@ -1,7 +1,7 @@
 :root {
     padding: 0;
     margin: 0;
-    display: flex;
+    display: none;
 }
 
 #mainContainer {
@@ -40,9 +40,10 @@
     flex-grow: 1;
     flex-shrink: 0;
     color: rgb(227, 227, 227);
-    font-size: 300%;
-    -unity-text-align: middle-center;
-		-unity-font-definition: url(/Assets/Fonts/SEASRN.ttf);
+    font-size: 50px;
+	margin-left: 30px;
+    -unity-text-align: middle-left;
+	-unity-font-definition: url(/Assets/Fonts/SEASRN.ttf);
 }
 
 #dialogueBox {
@@ -55,12 +56,14 @@
 
 #dialogueText {
     flex-grow: 1;
-    flex-shrink: 0;
-    margin-left: 1%;
+    flex-shrink: 1;
+    font-size: 40px;
+	margin-left: 30px;
+    -unity-text-align: upper-left;
     color: rgb(227, 227, 227);
-    font-size: 260%;
+    font-size: 50px;
     white-space: normal;
-		-unity-font-definition: url(/Assets/Fonts/Bellerose.ttf);
+	-unity-font-definition: url(/Assets/Fonts/CaacupeOne-Regular.ttf);
 }
 
 .dialogue-choice {
@@ -75,7 +78,8 @@
     color: white;
     align-items: center;
     justify-content: center;
-    font-size: 200%;
+    font-size: 50px;
+	-unity-font-definition: url(/Assets/Fonts/CaacupeOne-Regular.ttf);
 }
 
 .dialogue-choice:hover {

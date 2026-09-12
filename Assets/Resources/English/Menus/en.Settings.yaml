@@ -1,0 +1,12 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  label_settings:
+    Text: "Settings"
+  label_slider_sens:
+    Text: "PPOP"
+  label_dropdown_lang:
+    Text: "Language"
+  button_back:
+    Text: "Back"

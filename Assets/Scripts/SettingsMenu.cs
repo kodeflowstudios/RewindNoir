@@ -39,7 +39,7 @@ public class SettingsMenu : MonoBehaviour
     {
 		if (notePadOpen) return;
 		if (mainMenu != null) return;
-		if (GameManager.Instance.inDialogue) return;
+		if ((bool)(GameManager.Instance?.inDialogue)) return;
 		
 		if (_root.style.display == DisplayStyle.None)
 		{
@@ -66,11 +66,13 @@ public class SettingsMenu : MonoBehaviour
 		{
 			PlayerPrefs.SetFloat("Sensitivity", evt.newValue);
 		});
+		sensSlider.Q<Label>(className: "unity-base-field__label").name = "label_slider_sens";
 
 		var langDropdown = _root.Q<DropdownField>("dropdown_lang");
 		langDropdown.RegisterValueChangedCallback(evt => PlayerPrefs.SetString("Language", evt.newValue));
 		langDropdown.choices.Add("English");
 		langDropdown.value = "English";
+		langDropdown.Q<Label>(className: "unity-base-field__label").name = "label_dropdown_lang";
 
 		var backButton = _root.Q<Button>("button_back");
 		backButton.clickable.clicked += () =>

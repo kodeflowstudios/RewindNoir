@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(2);
+		SceneManager.LoadScene(3);
 
 		while (!playerA) yield return new WaitForEndOfFrame();
 
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(3);
+		SceneManager.LoadScene(4);
 
 		if (!enteredEntropy)
 		{
