@@ -11,11 +11,11 @@ public class Entropy : MonoBehaviour
 	{
 		if (inVoid)
 		{
-			if (!GameManager.Instance.playerB) 
+			if (!GameManager.Instance?.playerB) 
 			{
 				GameManager.Instance.playerB = gameObject;
 			}
-			if (!GameManager.Instance.cineCamB)
+			if (!GameManager.Instance?.cineCamB)
 			{
 				GameManager.Instance.cineCamB = GetComponentInChildren<CinemachineCamera>();
 				GameManager.Instance.cinePanTiltB = GetComponentInChildren<CinemachinePanTilt>();
@@ -23,11 +23,11 @@ public class Entropy : MonoBehaviour
 		}
 		else
 		{
-			if (!GameManager.Instance.playerA) 
+			if (!GameManager.Instance?.playerA) 
 			{
 				GameManager.Instance.playerA = gameObject;
 			}
-			if (!GameManager.Instance.cineCamA)
+			if (!GameManager.Instance?.cineCamA)
 			{
 				GameManager.Instance.cineCamA = GetComponentInChildren<CinemachineCamera>();
 				GameManager.Instance.cinePanTiltA = GetComponentInChildren<CinemachinePanTilt>();
@@ -49,11 +49,11 @@ public class Entropy : MonoBehaviour
     {
 		if (inVoid) 
 		{
-			GameManager.Instance.TransitionToNormal();
+			GameManager.Instance?.TransitionToNormal();
 		}
 		else 
 		{
-			GameManager.Instance.TransitionToVoid();
+			GameManager.Instance?.TransitionToVoid();
 		}
     }
 }

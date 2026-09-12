@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsMenu
   mainMenu: {fileID: 2027372325}
+  isPaused: 0
+  notePadOpen: 0
   pauseAction: {fileID: -2993571388987686591, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &701116556
 GameObject:

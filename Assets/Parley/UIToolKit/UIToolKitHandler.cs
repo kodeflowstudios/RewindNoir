@@ -28,6 +28,7 @@ namespace KodeFlowStudios.Parley
 		// Drop the scene's UIDocument onto this field in the Inspector.
 		[SerializeField] private UIDocument uiDocument;
 
+		VisualElement _root;
 		VisualElement dialogueContainer;
 		Coroutine typewriteCoroutine;
 
@@ -35,17 +36,18 @@ namespace KodeFlowStudios.Parley
 		{
 			// The UXML template ships an element named "dialogueContainer" that
 			// holds everything: speaker box, text box, portrait.
-			dialogueContainer = uiDocument.rootVisualElement.Q<VisualElement>("dialogueContainer");
+			_root = uiDocument.rootVisualElement;
+			dialogueContainer = _root.Q<VisualElement>("dialogueContainer");
 		}
 
 		public void HideElements()
 		{
-			dialogueContainer.style.display = DisplayStyle.None;
+			_root.style.display = DisplayStyle.None;
 		}
 
 		public void ShowElements()
 		{
-			dialogueContainer.style.display = DisplayStyle.Flex;
+			_root.style.display = DisplayStyle.Flex;
 		}
 
 		public IEnumerator TypewriteRichText(Label label, string tagged, float charDelay = 0.05f)

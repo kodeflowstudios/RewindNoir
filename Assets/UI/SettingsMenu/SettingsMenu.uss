@@ -2,7 +2,7 @@
 	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
 }
 
-#SettingsMenu-container {
+:root {
 	display: none;
 }
 

@@ -4,7 +4,7 @@
 	-unity-font-definition: url(/Assets/Fonts/Kalam-Regular.ttf);
 }
 
-#Notepad-container {
+:root {
 	display: none;
 }
 
