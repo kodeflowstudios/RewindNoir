@@ -14,6 +14,6 @@
             <ui:Button text="Settings" name="button_settings"/>
             <ui:Button text="Quit" name="button_quit"/>
         </ui:VisualElement>
-		<ui:Label text="prototype build" class="version-label"/>
+		<ui:Label text="v1.0.0" class="version-label"/>
     </ui:VisualElement>
 </ui:UXML>

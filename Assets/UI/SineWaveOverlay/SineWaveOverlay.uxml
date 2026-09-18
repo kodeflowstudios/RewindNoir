@@ -1,0 +1,37 @@
+<ui:UXML 
+  xmlns:ui="UnityEngine.UIElements" 
+  xmlns:uie="UnityEditor.UIElements" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  engine="UnityEngine.UIElements" 
+  editor="UnityEditor.UIElements" 
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd" 
+  editor-extension-mode="False">
+<Style src="project://database/Assets/UI/SineWaveOverlay/SineWaveOverlay.uss"/>
+    <ui:VisualElement class="frame" name="SineWave">
+		<ui:Label text="Tune frequency to calibrate the void watch using (MOUSE WHEEL UP/DOWN)" name="label_tutorial"/>
+		<SineWaveElement class="movable-1"
+			amplitude="103"
+			frequency="11"
+			line-width="4"
+			phase="0"
+			time-multiplier="1" />
+		<SineWaveElement class="movable-2"
+			amplitude="103"
+			frequency="11"
+			line-width="4"
+			phase="0"
+			time-multiplier="1" />
+		<SineWaveElement class="movable-3"
+			amplitude="103"
+			frequency="11"
+			line-width="4"
+			phase="0"
+			time-multiplier="1" />
+		<SineWaveElement class="target"
+			amplitude="120"
+			frequency="6"
+			line-width="6"
+			phase="0"
+			time-multiplier="1" />
+    </ui:VisualElement>
+</ui:UXML>

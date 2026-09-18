@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class ResultScreen : MonoBehaviour
@@ -16,7 +15,7 @@ public class ResultScreen : MonoBehaviour
 		var menuButton = _root.Q<Button>("button_main_menu");
 		menuButton.clickable.clicked += () =>
 		{
-            SceneManager.LoadScene(0);
+			SceneSwitcher.SwitchScene("MainMenu");
 		};
 
 		var quitButton = _root.Q<Button>("button_quit");

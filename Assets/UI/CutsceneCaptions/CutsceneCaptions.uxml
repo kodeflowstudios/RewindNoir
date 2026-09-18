@@ -8,6 +8,7 @@
   editor-extension-mode="False">
     <Style src="project://database/Assets/UI/CutsceneCaptions/CutsceneCaptions.uss"/>
     <ui:VisualElement name="mainContainer">
-			<ui:Label text="Label" name="label_captions"/>
+		<ui:Label text="Keep holding to skip..." name="label_skip"/>
+		<ui:Label text="Label" name="label_captions"/>
     </ui:VisualElement>
 </ui:UXML>

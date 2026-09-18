@@ -32,7 +32,7 @@ public class SplashScreen : MonoBehaviour
     private void Skip(InputAction.CallbackContext context)
     {
 		StopCoroutine(_splashCoroutine);
-		SceneManager.LoadScene(1);
+		SceneSwitcher.SwitchScene("MainMenu");
     }
 
     IEnumerator Splash()
@@ -78,6 +78,6 @@ public class SplashScreen : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 
-		SceneManager.LoadScene(1);
+		SceneSwitcher.SwitchScene("MainMenu");
 	}
 }

@@ -14,10 +14,22 @@
     margin-bottom: 20px;
 }
 
+#label_skip {
+	position: absolute;
+	display: none;
+	left: 50%;
+	top: 50%;
+    color: rgb(227, 227, 227);
+	translate: -50% -50%;
+    font-size: 40px;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
 #label_captions {
     margin-left: 1%;
     color: rgb(227, 227, 227);
-    font-size: 50px;
+    font-size: 40px;
     white-space: normal;
-	-unity-font-definition: url(/Assets/Fonts/Bellerose.ttf);
+	-unity-text-align: middle-center;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
 }

@@ -1,20 +1,22 @@
 * {
-	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	color: #FFD787;
 }
 
 .main-container {
 	padding-left: 3%;
-	background-image: url("/Assets/Images/CarMainMenu.png");
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
 }
 
 .title {
-	color: darkred;
-	margin-top: 1%;
-	font-size: 135px;
+	margin-top: 30px;
+	font-size: 70px;
+	color: #306850;
 	-unity-font-style: bold;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	text-shadow: 0 10px 0 black;
 }
 
 .buttons-container {
@@ -22,16 +24,29 @@
 	width: 100%;
 	padding-right: 2%;
 	height: auto;
-	padding-top: 7%;
+	padding-top: 10%;
 	flex-grow: 1;
 }
 
 Button {
 	padding: 3%;
-	font-size: 50px;
-	width: 33%;
-	height: 16%;
+	font-size: 30px;
+	width: 500px;
+	height: 130px;
 	margin-bottom: 30px;
+	border-color: transparent;
+	background-color: transparent;
+	text-shadow: 0 10px 0 black;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonNormal9-Slice);
+}
+
+Button:hover {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonHovered9-Slice);
+}
+
+Button:active {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonPressed9-Slice);
 }
 
 Button:focus {
@@ -40,8 +55,8 @@ Button:focus {
 
 .version-label {
 	font-size: 35px;
-	color: navajowhite;
-	padding-right: 4px;
+	margin-right: 21px;
 	align-self: flex-end;
 	-unity-font-style: bold;
+	text-shadow: 0 10px 0 black;
 }

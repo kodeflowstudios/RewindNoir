@@ -1,0 +1,6 @@
+(The sound in this folder are just a reference for the type of sound, they are not intended to be used as loops)
+
+I strongly encourage to use the "one shot" sounds inside the letter folders as randomized arrays of sounds for the best results.
+It will make the sound of typing way less repetitive.
+
+- Nomagician

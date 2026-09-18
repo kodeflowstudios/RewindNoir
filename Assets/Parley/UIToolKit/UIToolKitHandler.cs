@@ -12,92 +12,99 @@
 
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Collections;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace KodeFlowStudios.Parley
 {
 	public class UIToolKitHandler : MonoBehaviour
 	{
-		struct RichChar
-		{
-			public char c;
-			public string color;
-		}
-
-		// Drop the scene's UIDocument onto this field in the Inspector.
 		[SerializeField] private UIDocument uiDocument;
 
-		VisualElement _root;
+		public List<AudioClip> dialogueClips;
+		public AudioSource dialogueSource;
+
+		[SerializeField] private float typewriteCharactersPerSecond = 45f;
+		[SerializeField] private float punctuationPause = 0.16f;
+
+		[SerializeField] private float inputLockoutDuration = 0.15f;
+
+		VisualElement root;
 		VisualElement dialogueContainer;
-		Coroutine typewriteCoroutine;
+		Coroutine typingCoroutine;
+
+		public bool IsTyping { get; private set; }
+
+		private string currentTypewriteText = string.Empty;
+		private Label currentDialogueLabel;
+
+		private float inputLockedUntil = -1f;
 
 		void Awake()
 		{
-			// The UXML template ships an element named "dialogueContainer" that
-			// holds everything: speaker box, text box, portrait.
-			_root = uiDocument.rootVisualElement;
-			dialogueContainer = _root.Q<VisualElement>("dialogueContainer");
+			root = uiDocument.rootVisualElement;
+			dialogueContainer = root.Q<VisualElement>("dialogueContainer");
+			dialogueContainer.Q<VisualElement>("dialogueBox").AddToClassList(
+			GameManager.Instance?.currentScene switch
+			{
+				GameManager.Scenes.APARTMENT_VOID
+				| GameManager.Scenes.CITY_VOID => "void",
+				_ => "normal"
+			});
+		}
+
+		void Update()
+		{
+			if (!IsTyping)
+				return;
+
+			if (IsInputLocked())
+				return;
+
+			if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+				SkipTypewrite();
+		}
+
+		private void OnEnable()
+		{
+			uiDocument?.rootVisualElement.RegisterCallback<PointerDownEvent>(HandlePointerDown, TrickleDown.TrickleDown);
+		}
+
+		private void OnDisable()
+		{
+			uiDocument?.rootVisualElement.UnregisterCallback<PointerDownEvent>(HandlePointerDown, TrickleDown.TrickleDown);
+		}
+
+		private bool IsInputLocked() => Time.unscaledTime < inputLockedUntil;
+
+		private void LockInput()
+		{
+			inputLockedUntil = Time.unscaledTime + inputLockoutDuration;
+		}
+
+		private void HandlePointerDown(PointerDownEvent evt)
+		{
+			if (!IsTyping || evt.button != 0)
+				return;
+
+			if (evt.target is Button)
+				return;
+
+			if (IsInputLocked())
+				return;
+
+			SkipTypewrite();
 		}
 
 		public void HideElements()
 		{
-			_root.style.display = DisplayStyle.None;
+			root.style.display = DisplayStyle.None;
 		}
 
 		public void ShowElements()
 		{
-			_root.style.display = DisplayStyle.Flex;
-		}
-
-		public IEnumerator TypewriteRichText(Label label, string tagged, float charDelay = 0.05f)
-		{
-			var chars = new List<RichChar>();
-			string currentColor = null;
-			int i = 0;
-
-			while (i < tagged.Length)
-			{
-				if (tagged[i] == '<')
-				{
-					int close = tagged.IndexOf('>', i);
-					if (close != -1)
-					{
-						string tag = tagged.Substring(i, close - i + 1);
-						if (tag.StartsWith("<color="))  currentColor = tag[7..^1];
-						else if (tag == "</color>")     currentColor = null;
-						i = close + 1;
-						continue;
-					}
-				}
-				chars.Add(new RichChar { c = tagged[i++], color = currentColor });
-			}
-
-			var sb = new System.Text.StringBuilder();
-			for (int count = 0; count <= chars.Count; count++)
-			{
-				sb.Clear();
-				for (i = 0; i < chars.Count; i++)
-				{
-					RichChar rc = chars[i];
-					bool hidden = i >= count;
-
-					if (hidden)
-					{
-						string hiddenColor = rc.color != null ? rc.color + "00" : "#00000000";
-						sb.Append($"<color={hiddenColor}>{rc.c}</color>");
-					}
-					else
-					{
-						if (rc.color != null) sb.Append($"<color={rc.color}>");
-						sb.Append(rc.c);
-						if (rc.color != null) sb.Append("</color>");
-					}
-				}
-
-				label.text = sb.ToString();
-				if (count < chars.Count) yield return new WaitForSeconds(charDelay);
-			}
+			root.style.display = DisplayStyle.Flex;
 		}
 
 		/// <summary>
@@ -113,14 +120,97 @@ namespace KodeFlowStudios.Parley
 			}
 		}
 
-		public void SetDialogueText(string text, bool typewrite=false)
+		public void SetDialogueText(string text, bool typewrite)
 		{
-			if (typewrite) 
+			if (typingCoroutine != null)
 			{
-				if (typewriteCoroutine != null) StopCoroutine(typewriteCoroutine);
-				typewriteCoroutine = StartCoroutine(TypewriteRichText(dialogueContainer.Q<VisualElement>("dialogueBox").Q<Label>("dialogueText"), text));
+				StopCoroutine(typingCoroutine);
+				typingCoroutine = null;
 			}
-			else dialogueContainer.Q<VisualElement>("dialogueBox").Q<Label>("dialogueText").text = text;
+
+			VisualElement dialogueBox = dialogueContainer?.Q<VisualElement>("dialogueBox");
+			currentDialogueLabel = dialogueBox?.Q<Label>("dialogueText");
+			currentTypewriteText = text ?? string.Empty;
+
+			if (currentDialogueLabel == null)
+			{
+				IsTyping = false;
+				Debug.LogError("[Parley] dialogueText Label was not found.");
+				return;
+			}
+
+			if (!typewrite || currentTypewriteText.Length == 0)
+			{
+				IsTyping = false;
+				currentDialogueLabel.text = currentTypewriteText;
+				return;
+			}
+
+			LockInput();
+			typingCoroutine = StartCoroutine(TypewriteText(currentTypewriteText, currentDialogueLabel));
+		}
+
+		public void SkipTypewrite()
+		{
+			if (!IsTyping)
+				return;
+
+			if (typingCoroutine != null)
+			{
+				StopCoroutine(typingCoroutine);
+				typingCoroutine = null;
+			}
+
+			if (currentDialogueLabel != null)
+				currentDialogueLabel.text = currentTypewriteText;
+
+			IsTyping = false;
+
+			dialogueSource.Stop();
+
+			LockInput();
+		}
+
+		private IEnumerator TypewriteText(string text, Label dialogueText)
+		{
+			if (text == null || dialogueText == null)
+			{
+				IsTyping = false;
+				typingCoroutine = null;
+				yield break;
+			}
+
+			IsTyping = true;
+			dialogueText.text = string.Empty;
+
+			float characterDelay = 1f / Mathf.Max(1f, typewriteCharactersPerSecond);
+			var visibleText = new System.Text.StringBuilder(text.Length);
+
+			for (int i = 0; i < text.Length; i++)
+			{
+				char character = text[i];
+				visibleText.Append(character);
+				dialogueText.text = visibleText.ToString();
+
+				float delay = characterDelay;
+
+				if (character == '.' || character == '!' || character == '?')
+					delay += punctuationPause;
+				else if (character == ',' || character == ';' || character == ':')
+					delay += punctuationPause * 0.5f;
+
+				if (!dialogueSource.isPlaying)
+				{
+					dialogueSource.clip = dialogueClips[Random.Range(0, dialogueClips.Count)];
+					dialogueSource.Play();
+				}
+
+				yield return new WaitForSecondsRealtime(delay);
+			}
+
+			dialogueText.text = text;
+			IsTyping = false;
+			typingCoroutine = null;
 		}
 
 		/// <summary>Swaps the character pic. Pass <c>null</c> to clear it.</summary>
@@ -157,22 +247,25 @@ namespace KodeFlowStudios.Parley
 		/// </summary>
 		public Button AddChoiceButton(int index, string buttonText, System.Action action)
 		{
+			// Choices just appeared — protect against a click that's still
+			// "in flight" from whatever just happened (a skip, an advance)
+			// landing on a button it was never actually aimed at.
+			LockInput();
+
 			var choiceButton = new Button()
 			{
 				text = buttonText,
 				name = $"choiceButton{index}"
 			};
-			choiceButton.clicked += action;
-			choiceButton.AddToClassList("dialogue-choice");
 
-			// Block ALL pointer interaction (not just click) until the mouse
-			// that spawned this button has actually been released.
-			choiceButton.pickingMode = PickingMode.Ignore;
-			choiceButton.schedule.Execute(() =>
+			choiceButton.clicked += () =>
 			{
-				if (!UnityEngine.InputSystem.Mouse.current.leftButton.isPressed)
-					choiceButton.pickingMode = PickingMode.Position;
-			}).Every(16).Until(() => choiceButton.pickingMode == PickingMode.Position);
+				if (IsInputLocked())
+					return;
+
+				action();
+			};
+			choiceButton.AddToClassList("dialogue-choice");
 
 			dialogueContainer.Add(choiceButton);
 

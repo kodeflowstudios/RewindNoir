@@ -1,71 +1,144 @@
 * {
-	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	color: #FFD787;
 }
 
 :root {
 	display: none;
 }
 
-.main-container {
+.pause-container {
+	display: none;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+}
+
+.pause-container > Label {
+	margin-bottom: 70px;
+}
+
+.pause-container > Button {
+	width: 500px;
+	height: 130px;
+}
+
+.settings-container {
+	display: flex;
 	padding-left: 2%;
-	background-image: url("/Assets/Images/CarMainMenu.png");
-	background-color: black;
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
 }
 
 .title {
-	color: darkred;
-	font-size: 135px;
+	margin-top: 30px;
+	font-size: 70px;
+	-unity-font-style: bold;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	text-shadow: 0 10px 0 black;
 }
 
-.settings-container {
+.settings-items-container {
 	align-items: flex-end;
 	width: 100%;
 	padding-right: 2%;
 	height: auto;
+	flex-grow: 1;
 	padding-top: 10%;
 }
 
 Slider {
-	width: 33%;
+	width: 45%;
 	font-size: 36px;
-	color: navajowhite;
+	margin-bottom: 20px;
 }
 
-Slider:focus > Label {
-	color: navajowhite;
+.unity-base-slider__tracker {
+	height: 30px;
+	border-color: transparent;
+	background-color: transparent;
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#roundedBarFrame);
+	translate: 0 -4px;
+}
+.unity-base-slider__dragger {
+	width: 52px;
+	height: 40px;
+	border-color: transparent;
+	background-color: transparent;
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#handle1);
 }
 
 Slider > Label {
-	margin-right: 0;
+	margin-right: 20px;
+	text-shadow: 0 10px 0 black;
 }
 
 DropdownField {
-	width: 33%;
+	width: 39%;
 	font-size: 36px;
 	color: black;
 }
 
-DropdownField > Label {
-	color: navajowhite;
-	margin-right: 0;
+.unity-base-popup-field__input {
+	border-color: transparent;
+	background-color: transparent;
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonNormal9-Slice);
 }
 
-.settings-footer {
-	margin-top: auto;
-	width: 100%;
-	align-self: flex-start;
-	flex-direction: row;
+.unity-base-popup-field__arrow {
+	width: 20px;
+	height: 20px;
+	background-color: transparent;
+	-unity-background-image-tint-color: #86C06C;
+}
+
+DropdownField:hover .unity-base-field__input.unity-base-popup-field__input.unity-popup-field__input {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonHovered9-Slice);
+}
+
+DropdownField:hover .unity-base-popup-field__arrow {
+	-unity-background-image-tint-color: #306850;
+}
+
+DropdownField:active .unity-base-field__input.unity-base-popup-field__input.unity-popup-field__input {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonNormal9-Slice);
+}
+
+.unity-base-popup-field__text {
+	margin-left: 2px;
+}
+
+DropdownField > Label {
+	flex-shrink: 1;
+	flex-grow: 0;
+	text-shadow: 0 10px 0 black;
+	margin-right: 0;
+	margin-right: 20px;
 }
 
 Button {
-	font-size: 38px;
-	width: 18%;
-	height: auto;
-	margin-bottom: 1%;
-	margin-right: auto;
+	padding: 3%;
+	font-size: 30px;
+	width: 400px;
+	height: 120px;
+	margin-bottom: 30px;
+	border-color: transparent;
+	background-color: transparent;
+	text-shadow: 0 10px 0 black;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonNormal9-Slice);
+}
+
+Button:hover {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonHovered9-Slice);
+}
+
+Button:active {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonPressed9-Slice);
 }
 
 Button:focus {
@@ -74,8 +147,7 @@ Button:focus {
 
 .version-label {
 	font-size: 35px;
-	color: navajowhite;
-	padding-right: 4px;
-	align-self: flex-end;
+	margin-right: 17px;
 	-unity-font-style: bold;
+	text-shadow: 0 10px 0 black;
 }

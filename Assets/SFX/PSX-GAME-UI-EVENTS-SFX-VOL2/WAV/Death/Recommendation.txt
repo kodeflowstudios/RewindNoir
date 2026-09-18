@@ -1,0 +1,3 @@
+The concept for these SFX is that you could use the versions without reverb and then add a reverb effect in-engine to closely match the environments in your games.
+
+You can use the versions with the prebaked reverb if you would rather not mess with audio processing in the engine.

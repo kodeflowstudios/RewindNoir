@@ -40,6 +40,20 @@ namespace KodeFlowStudios.Parley.YamlCore
 		/// <summary>Fires when the player advances. Await or subscribe as you like.</summary>
 		public AwaitableEvent<string> OnNextDialogue { get; private set; } = new AwaitableEvent<string>();
 
+		/// <summary>
+		/// Whether the bound "advance" input is currently allowed to progress
+		/// the conversation. The bound InputAction itself is enabled once, for
+		/// the whole conversation, and left alone after that — this bool is
+		/// how callers gate individual steps (typing, choices shown, etc.)
+		/// instead of calling InputAction.Enable()/Disable() every step.
+		/// Toggling an action's enabled state from inside that same action's
+		/// own performed callback (which is exactly what happens here, since
+		/// resuming an awaited OnNextDialogue runs synchronously inside the
+		/// callback) corrupts the Input System's internal event buffer and
+		/// can throw a native assertion. A plain bool flip is always safe.
+		/// </summary>
+		public bool ListeningForAdvance = false;
+
 		public bool ConversationEnded = false;
 
 		// The parsed node table keyed by node name. YAML authoring uses
@@ -95,7 +109,11 @@ namespace KodeFlowStudios.Parley.YamlCore
 			UnBindNextEvent();
 			inputAction.Enable();
 			_nextDialogue = inputAction;
-			_nextHandler = ctx => OnNextDialogue?.Invoke("*");
+			_nextHandler = ctx =>
+			{
+				if (!ListeningForAdvance) return;
+				OnNextDialogue?.Invoke("*");
+			};
 			_nextDialogue.performed += _nextHandler;
 		}
 

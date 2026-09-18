@@ -1,5 +1,5 @@
 * {
-	-unity-font-definition: url(/Assets/Fonts/BebasNeue-Regular.ttf);
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
 }
 
 :root {

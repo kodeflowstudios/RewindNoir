@@ -25,6 +25,7 @@ namespace KodeFlowStudios.Parley.Localization
 	{
 		English,
 		German,
+		Arabic
 		// add more languages here..
 	}
 
@@ -59,6 +60,10 @@ namespace KodeFlowStudios.Parley.Localization
 			{
 				LanguageID.German,
 				new LanguageInfo("de", "Deutsch", "German")
+			},
+			{
+				LanguageID.Arabic,
+				new LanguageInfo("ar", "العربية", "Arabic")
 			},
 			// add more languages here..
 		};

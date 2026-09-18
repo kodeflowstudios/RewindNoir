@@ -24,7 +24,22 @@ public class Interact : MonoBehaviour
 		if (GameManager.Instance.inDialogue) return;
         if (Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out RaycastHit hit, 10f, hitMask))
         {
-			hit.collider.gameObject.GetComponent<DialogueHandler>().StartDialogue();
+			GameObject obj = hit.collider.gameObject;
+			switch (obj.tag)
+			{
+				case "NPC":
+					obj.GetComponent<DialogueHandler>()?.StartDialogue();
+					break;
+				case "Object of interest":
+					obj.GetComponent<ObjOfInterest>()?.StartDialogue();
+					break;
+				case "Door":
+					obj.GetComponent<Door>().ToggleDoor();
+					break;
+				default:
+					Debug.Log($"Unkown tag found: {obj.tag}");
+					break;
+			}
         }
     }
 }

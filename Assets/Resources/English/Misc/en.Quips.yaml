@@ -1,0 +1,39 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  mirror:
+    Speaker: "You"
+    Text: "Dispite everything it's still—"
+    NextNode: mirror2
+  mirror2:
+    Speaker: "You"
+    Text: "Wait I'm invisible?!"
+  mirror_void:
+    Speaker: "You"
+    Text: "Can't see anything in this..."
+  dead_daniel:
+    Speaker: "You"
+    Text: "..."
+    NextNode: dead_daniel2
+  dead_daniel2:
+    Speaker: "You"
+    Text: "Looks pretty dead to me..."
+  poopin_eric:
+    Speaker: "Eric"
+    Text: "Hmm..."
+    NextNode: poopin_eric2
+  poopin_eric2:
+    Speaker: "Eric"
+    Text: "Hmm..."
+    NextNode: poopin_eric3
+  poopin_eric3:
+    Speaker: "Eric"
+    Text: "Hmm..."
+    NextNode: poopin_eric4
+  poopin_eric4:
+    Speaker: "Eric"
+    Text: "Hold on I'm thinking dude."
+  stuart_hey:
+    Speaker: "Stuart"
+    Text: "Sup, dude."

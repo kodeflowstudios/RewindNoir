@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
@@ -18,12 +17,13 @@ public class MainMenu : MonoBehaviour
 		var playButton = _root.Q<Button>("button_play");
 		playButton.clickable.clicked += () =>
 		{
-			SceneManager.LoadScene(2);
+			SceneSwitcher.SwitchScene("Intro");
 		};
 
 		var settingsButton = _root.Q<Button>("button_settings");
 		settingsButton.clickable.clicked += () =>
 		{
+			_root.style.display = DisplayStyle.None;
 			settingsMenu.rootVisualElement.style.display = DisplayStyle.Flex;
 		};
 
@@ -38,5 +38,8 @@ public class MainMenu : MonoBehaviour
 			Application.Quit();
 #endif
 		};
+
+		UnityEngine.Cursor.visible = true;
+		UnityEngine.Cursor.lockState = CursorLockMode.Confined;
     }
 }

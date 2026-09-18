@@ -1,46 +1,68 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.InputSystem;
 using KodeFlowStudios.Parley;
 using KodeFlowStudios.Parley.YamlCore;
+using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class DialogueHandler : MonoBehaviour
 {
-	public NPC npc;
+	public string folderName;
+	public string fileName;
+	public string continueNode = "node_10";
+	public RotateLookAt lookAt;
 	public PlayerController playerController;
+	public AudioSource dialogueSource;
+	public List<AudioClip> dialogueClips;
 	public UIDocument resultScreen;
 	public UIToolKitHandler uiToolKitHandler;
 	ParleyYaml parleyYaml;
+
+	private InputAction nextDialogueInput;
 
 	void Start()
 	{
 		uiToolKitHandler.HideElements();
 		resultScreen.rootVisualElement.style.display = DisplayStyle.None;
+		GameManager.Instance?.LoadDialogue(folderName, fileName);
 		parleyYaml = GameManager.Instance?.npcDialogue;
 	}
 
 	async public void StartDialogue()
 	{
+		if (GameManager.Instance.inDialogue) return;
 		GameManager.Instance.inDialogue = true;
 
-		npc.LookAtPlayer();
+		uiToolKitHandler.dialogueClips = dialogueClips;
+		uiToolKitHandler.dialogueSource = dialogueSource;
+
+		lookAt?.LookAtPlayer();
 		playerController.DisableMoving();
 
 		GameManager.Instance.obu.HideObjective();
 
 		uiToolKitHandler.ShowElements();
 
+		nextDialogueInput ??= new InputAction("NextDialogue", binding: "<Mouse>/leftButton");
+
+		parleyYaml.BindNextEvent(nextDialogueInput);
+		parleyYaml.ListeningForAdvance = false;
+
 		if (GameManager.Instance.hasTalked)
 		{
 			parleyYaml.ConversationEnded = false;
-			parleyYaml.BindNextEvent(new InputAction("NextDialogue", binding: "<Mouse>/leftButton"));
-			parleyYaml.ProgressDialogue("node_10");
+			parleyYaml.ProgressDialogue(continueNode);
 		}
 
-		while (parleyYaml.ConversationEnded != true)
+		while (!parleyYaml.ConversationEnded)
 		{
 			uiToolKitHandler.SetSpeakerNameText(parleyYaml.CurrentNode.Speaker);
-			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text);
+			uiToolKitHandler.SetDialogueText(parleyYaml.CurrentNode.Text, true);
+
+			while (uiToolKitHandler.IsTyping)
+				await System.Threading.Tasks.Task.Yield();
+
+			await System.Threading.Tasks.Task.Yield();
 
 			var choices = parleyYaml.GetCurrentChoices();
 			if (choices.Count > 0)
@@ -55,9 +77,17 @@ public class DialogueHandler : MonoBehaviour
 					});
 				}
 
+				parleyYaml.ListeningForAdvance = false;
 				await parleyYaml.GetPlayerChoice();
 			}
-			else await parleyYaml.OnNextDialogue;
+			else
+			{
+				parleyYaml.ListeningForAdvance = true;
+
+				await parleyYaml.OnNextDialogue;
+
+				parleyYaml.ListeningForAdvance = false;
+			}
 		}
 
 		if (!GameManager.Instance.hasTalked)
@@ -69,22 +99,25 @@ public class DialogueHandler : MonoBehaviour
 		playerController.EnableMoving();
 		uiToolKitHandler.HideElements();
 
-		if (parleyYaml.Flags.IsFlagSet("has_won"))
-		{
-			resultScreen.rootVisualElement.style.display = DisplayStyle.Flex;
-			resultScreen.GetComponent<ResultScreen>().ShowResult("You Win!", Color.green);
-			playerController.DisableMoving();
-		}
-		else if (parleyYaml.Flags.IsFlagSet("has_lost"))
-		{
-			resultScreen.rootVisualElement.style.display = DisplayStyle.Flex;
-			resultScreen.GetComponent<ResultScreen>().ShowResult("You Lose...", Color.red);
-			playerController.DisableMoving();
-		}
-
 		GameManager.Instance.inDialogue = false;
-		GameManager.Instance.canShowNotepad = true;
 
 		GameManager.Instance.obu.ShowObjective();
+
+		GameManager.Instance.choseRight = parleyYaml.Flags.IsFlagSet("correct");
+
+		if (parleyYaml.Flags.IsFlagSet("selected"))
+		{
+			SceneSwitcher.SwitchScene("Apartment");
+		}
+	}
+
+	private void OnDestroy()
+	{
+		if (nextDialogueInput != null)
+		{
+			nextDialogueInput.Disable();
+			nextDialogueInput.Dispose();
+			nextDialogueInput = null;
+		}
 	}
 }

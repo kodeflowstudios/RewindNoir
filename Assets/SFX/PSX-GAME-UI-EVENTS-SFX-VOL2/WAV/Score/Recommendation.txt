@@ -1,0 +1,5 @@
+You can play these rounds in quick bursts right after eachother for that score counter effect, either using the same or playing a randomized array of the sounds.
+
+The sounds with the "-end" suffix can be used after the counting has ended for a little "extra" effect that can feel more rewarding.
+
+- Nomagician

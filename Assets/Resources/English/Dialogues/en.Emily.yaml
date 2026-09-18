@@ -1,0 +1,123 @@
+# was jus stress testing my asset, don't mind the hoops lol
+MetaData:
+  Language: English
+  TextDirection: LTR
+Aliases:
+  victim:
+    age: 22
+    name: "Daniel Webb"
+    first_name: "Daniel"
+    last_name: "Webb"
+    profession: "@suspect_3.profession"
+  suspect_1:
+    age: 46
+    name: "Mary Antoinette"
+    profession: "Surgeon"
+  suspect_2:
+    age: 38
+    name: "Jared Brown"
+    profession: "Repairman"
+  suspect_3:
+    age: 20
+    name: "Olivia Webb"
+    profession: "Student"
+Dialogue:
+  node_1:
+    Speaker: "Emily"
+    Text: "Hello Sir, thanks for showing up in ample time."
+    Choices:
+      - Text: "You're welcome, brief me on what happend."
+        NextNode: node_2
+      - Text: "..."
+        NextNode: node_2
+  node_2:
+    Speaker: "Emily"
+    Text: "The victim is @victim.name, a @victim.age-year-old @victim.profession"
+    NextNode: node_3
+  node_3:
+    Speaker: "Emily"
+    Text: "He was found dead in his apartment approximately 2 hours ago."
+    Choices:
+      - Text: "How was he murdered?"
+        SetFlags:
+          - "asked_how"
+        NextNode: node_4
+      - Text: "Who are the current suspects?"
+        SetFlags:
+          - "asked_suspects"
+        NextNode: node_7
+  node_4:
+    Speaker: "Emily"
+    Text: "We are awaiting forensics for more details but from what it seems his wrists were slit then he was put in the bath."
+    Choices:
+      - Text: "Why do you think he wasn't bathing while it happened?"
+        NextNode: node_5
+      - Text: "I see.."
+        NextNode: node_6
+  node_5:
+    Speaker: "Emily"
+    Text: "Who on earth showers with ALL of their clothes on.. including their shoes too?"
+    Choices:
+      - Text: "Right."
+        NextNode: node_6
+  node_6:
+    CheckFlags:
+      - "asked_how"
+      - "asked_suspects"
+    TrueNode: node_15
+    FalseNode: node_3
+  node_7:
+    Speaker: "Emily"
+    Text: "The current suspects are as follows:"
+    NextNode: node_8
+  node_8:
+    Speaker: "Emily"
+    Text: "@suspect_1.name, a @suspect_1.age-year-old @suspect_1.profession."
+    NextNode: node_9
+  node_9:
+    Speaker: "Emily"
+    Text: "She had quite a few bones to pick with @victim.name, specifically LOTS of noise complaints... he was quite the neighbour"
+    NextNode: node_10
+  node_10:
+    Speaker: "Emily"
+    Text: "@suspect_2.name, a @suspect_2.age-year-old @suspect_2.profession."
+    NextNode: node_11
+  node_11:
+    Speaker: "Emily"
+    Text: "He had a job schedueled in Mr. @victim.last_name's apartment today, just a few hours before he was murdered. We are yet to be able to get in touch with him."
+    NextNode: node_12
+  node_12:
+    Speaker: "Emily"
+    Text: "And then there's @suspect_3.name, his own sister. She's @suspect_3.age-years-old and is a @suspect_3.profession."
+    NextNode: node_13
+  node_13:
+    Speaker: "Emily"
+    Text: "According to the neighbours, her and @victim.first_name were on really bad terms, lots of fighting and threats."
+    NextNode: node_14
+  node_14:
+    Speaker: "Emily"
+    Text: "We have her in the interrogation room back at the station with Officers Karter and Simon, we'll report back when we hear more from them."
+    NextNode: node_6
+  node_15:
+    Speaker: "Emily"
+    Text: "That's all of the info we have at the moment."
+    Choices:
+      - Text: "Alright thanks, Emily. I'll get to the bottom of this."
+        NextNode: end
+  end:
+    Speaker: "Emily"
+    Text: "Break a leg, detective."
+
+  node_16:
+    Speaker: "Emily"
+    Text: "Did you figure it out?"
+    Choices:
+      - Text: "Nope"
+        NextNode: node_17
+      - Text: "Not Yet..."
+        NextNode: node_17
+      - Text: "Nevermind"
+        NextNode: node_17
+  node_17:
+    Speaker: "Emily"
+    Text: "Well, good luck with it sir."

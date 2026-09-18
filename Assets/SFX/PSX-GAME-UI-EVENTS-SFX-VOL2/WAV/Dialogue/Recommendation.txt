@@ -1,0 +1,5 @@
+The loops are just for reference.
+I recommend choosing one of the voices from the A-G folders and playing these sounds in the engine as a randomized array, so they are not repeated with an obvious pattern.
+To further improve them you can randomize the pitch slightly
+
+- Nomagician

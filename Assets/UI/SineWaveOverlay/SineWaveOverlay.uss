@@ -1,0 +1,48 @@
+:root {
+	--sine-colour: white;
+	display: none;
+}
+
+.frame {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+Label {
+	margin-top: 30px;
+	color: var(--sine-colour);
+	width: 100%;
+	-unity-text-align: middle-center;
+	font-size: 30px;
+	white-space: normal;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
+SineWaveElement {
+	position: relative;
+	width: 2000px;
+	height: 1000px;
+}
+
+.movable-1 {
+	color: var(--sine-colour);
+	top: 50%;
+	left: 50%;
+	translate: -50% -100%;
+}
+
+.movable-2 {
+	color: var(--sine-colour);
+	translate: 0% 20%;
+}
+
+.movable-3 {
+	color: var(--sine-colour);
+	translate: 0% -1000%;
+}
+
+.target {
+	color: orange;
+	translate: 0% -180%;
+}

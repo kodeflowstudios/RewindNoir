@@ -3,18 +3,30 @@ using KodeFlowStudios.Parley.Localization;
 using KodeFlowStudios.Parley.YamlCore;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	public bool canShowNotepad = false;
+	public enum Scenes
+	{
+		MAIN_MENU,
+		INTRO,
+		FM_SINES,
+		CITY,
+		CITY_VOID,
+		APARTMENT,
+		APARTMENT_VOID
+	}
+
+	public Scenes currentScene = Scenes.CITY;
+
 	public bool hasTalked = false;
 	public bool inDialogue = false;
 	public bool enteredEntropy = false;
 	public bool hasOpenedNotepad = false;
+	public bool choseRight = false;
 
 	public float _duration = 0.5f;
 	public float _fovMin = 60f;
@@ -40,6 +52,8 @@ public class GameManager : MonoBehaviour
 	public ParleyYaml npcDialogue;
 	public ParleyYaml objectivesDialogue;
 
+	private bool _isTuned = false;
+
 	void Awake()
 	{
 		if (Instance == null)
@@ -51,8 +65,6 @@ public class GameManager : MonoBehaviour
 			Destroy(this);
 		}
 		DontDestroyOnLoad(this);
-
-		npcDialogue = new ParleyYaml("Dialogues", "Cop", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
 		objectivesDialogue = new ParleyYaml("Misc", "Objectives", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
 	}
 
@@ -97,7 +109,12 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(3);
+		SceneSwitcher.SwitchScene(currentScene switch
+		{
+			Scenes.CITY_VOID => "City",
+			Scenes.APARTMENT_VOID => "Apartment",
+			_ => null
+		});
 
 		while (!playerA) yield return new WaitForEndOfFrame();
 
@@ -169,7 +186,19 @@ public class GameManager : MonoBehaviour
 		c.a = 1;
 		fade.color = c;
 
-		SceneManager.LoadScene(4);
+		SceneSwitcher.SwitchScene(currentScene switch
+		{
+			Scenes.CITY => _isTuned ? "CityVoid" : "FMSines",
+			Scenes.APARTMENT => _isTuned ? "ApartmentVoid" : "FMSines",
+			_ => null
+		});
+
+		currentScene = currentScene switch 
+		{
+			Scenes.CITY => Scenes.CITY_VOID,
+			Scenes.APARTMENT => Scenes.APARTMENT_VOID,
+			_ => currentScene
+		};
 
 		if (!enteredEntropy)
 		{
@@ -211,5 +240,12 @@ public class GameManager : MonoBehaviour
 		fade.color = c;
 
 		obu.ShowObjective();
+
+		_isTuned = true;
 	}
+
+    public void LoadDialogue(string folderName, string fileName)
+    {
+		npcDialogue = new ParleyYaml(folderName, fileName, Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
+    }
 }

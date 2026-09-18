@@ -1,23 +1,27 @@
+* {
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
 :root {
-    padding: 0;
-    margin: 0;
-    display: none;
+	padding: 0;
+	margin: 0;
+	display: none;
 }
 
 #mainContainer {
-    flex-grow: 1;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 5%;
+	flex-grow: 1;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 5%;
 }
 
 #dialogueContainer {
-    flex-grow: 1;
-    flex-shrink: 0;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: 80%;
-    height: 40%;
+	flex-grow: 1;
+	flex-shrink: 0;
+	justify-content: flex-end;
+	align-items: flex-start;
+	width: 80%;
+	height: 40%;
 }
 
 #characterImage {
@@ -29,59 +33,75 @@
 }
 
 #speakerNameBox {
-    flex-grow: 0;
-    flex-shrink: 1;
-    background-color: rgb(33, 33, 33);
-    width: 15%;
-    height: auto;
+	flex-grow: 0;
+	flex-shrink: 1;
+	background-color: transparent;
+	width: 100%;
+	height: auto;
 }
 
 #speakerNameText {
-    flex-grow: 1;
-    flex-shrink: 0;
-    color: rgb(227, 227, 227);
-    font-size: 50px;
+	flex-grow: 1;
+	flex-shrink: 0;
+	color: rgb(227, 227, 227);
+	font-size: 50px;
 	margin-left: 30px;
-    -unity-text-align: middle-left;
-	-unity-font-definition: url(/Assets/Fonts/SEASRN.ttf);
+	-unity-font-style: bold;
 }
 
 #dialogueBox {
-    flex-grow: 0;
-    flex-shrink: 1;
-    background-color: rgb(20, 20, 20);
-    width: 100%;
-    height: auto;
+	flex-grow: 0;
+	flex-shrink: 1;
+	padding: 50px;
+	background-color: transparent;
+	width: 100%;
+	height: auto;
+}
+
+.normal {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#mainPanel9-Slice);
+}
+
+.void {
+	background-image: url(/Assets/Images/OrnateUI/BrownFantasyUISheet.png#mainPanel9-Slice);
 }
 
 #dialogueText {
-    flex-grow: 1;
-    flex-shrink: 1;
-    font-size: 40px;
-	margin-left: 30px;
-    -unity-text-align: upper-left;
-    color: rgb(227, 227, 227);
-    font-size: 50px;
-    white-space: normal;
-	-unity-font-definition: url(/Assets/Fonts/CaacupeOne-Regular.ttf);
+	font-size: 33px;
+	color: rgb(227, 227, 227);
+	white-space: normal;
 }
 
 .dialogue-choice {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: auto;
-    width: 100%;
-    background-color: rgb(20, 20, 20);
-    margin: 0;
-    padding: 2%;
-    border-width: 0;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-	-unity-font-definition: url(/Assets/Fonts/CaacupeOne-Regular.ttf);
+	flex-grow: 0;
+	flex-shrink: 0;
+	height: auto;
+	width: 100%;
+	background-color: transparent;
+	margin: 0;
+	padding: 2%;
+	border-width: 0;
+	color: #ffffff;
+	align-items: center;
+	justify-content: center;
+	font-size: 28px;
 }
 
 .dialogue-choice:hover {
-    background-color: #282828ff;
+	color: #b8b8b8ff; 
+}
+
+.dialogue-choice:active {
+	color: #bfbfbf; 
+}
+
+.arabic {
+	-unity-text-align: upper-right;
+	-unity-text-generator: advanced;
+	-unity-font-definition: url(/Assets/Fonts/Arabic\ Pixel.ttf);
+}
+
+.english {
+	-unity-text-align: upper-left;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
 }

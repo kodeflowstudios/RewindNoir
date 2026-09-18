@@ -8,45 +8,62 @@
   editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Notepad/Notepad.uss"/>
     <ui:VisualElement class="frame" name="Notepad">
-		<ui:VisualElement class="page" name="page_one">
-			<ui:VisualElement class="header" name="header">
-				<ui:Label text="Suspects" class="label-title" name="label_title"/>
+			<ui:VisualElement class="page" name="page_one">
+				<ui:VisualElement class="header" name="header">
+					<ui:Label text="Suspects" class="label-title" name="label_title"/>
+				</ui:VisualElement>
+				<ui:Label text="Anna Holloway:" class="label-name"/>
+				<ui:Label text="- Age: 23" class="label-details" name="label_age_anna"/>
+				<ui:Label text="- Address: 59 Ramsgate Rd." class="label-details" name="label_address_anna"/>
+				<ui:Label text="- Profession: Student" class="label-details" name="label_profession_anna"/>
+				<ui:Label text="- Phone Number: 70 6655 7349" class="label-details" name="label_number_anna"/>
+				<ui:Label text="Jacob Kirby:" class="label-name"/>
+				<ui:Label text="- Age: 38" class="label-details" name="label_age_jacob"/>
+				<ui:Label text="- Address: 23 Marlborough St." class="label-details" name="label_address_jacob"/>
+				<ui:Label text="- Profession: Barista" class="label-details" name="label_profession_jacob"/>
+				<ui:Label text="- Phone Number: 79 8888 1143" class="label-details" name="label_number_jacob"/>
+				<ui:Label text="Harrison Hancock:" class="label-name"/>
+				<ui:Label text="- Age: 42" class="label-details" name="label_age_harrison"/>
+				<ui:Label text="- Address: 88 Well Lane" class="label-details" name="label_address_harrison"/>
+				<ui:Label text="- Profession: Microbiologist" class="label-details" name="label_profession_harrison"/>
+				<ui:Label text="- Phone Number: 78 8012 4064" class="label-details" name="label_number_harrison"/>
 			</ui:VisualElement>
-			<ui:Label text="Anna Holloway:" class="label-name"/>
-			<ui:Label text="- Age: 23" class="label-details" name="label_age_anna"/>
-			<ui:Label text="- Address: 59 Ramsgate Rd." class="label-details" name="label_address_anna"/>
-			<ui:Label text="- Profession: Student" class="label-details" name="label_profession_anna"/>
-			<ui:Label text="- Phone Number: 70 6655 7349" class="label-details" name="label_number_anna"/>
-			<ui:Label text="Jacob Kirby:" class="label-name"/>
-			<ui:Label text="- Age: 38" class="label-details" name="label_age_jacob"/>
-			<ui:Label text="- Address: 59 Ramsgate Rd." class="label-details" name="label_address_jacob"/>
-			<ui:Label text="- Profession: 23 Marlborough St." class="label-details" name="label_profession_jacob"/>
-			<ui:Label text="- Phone Number: 79 8888 1143" class="label-details" name="label_number_jacob"/>
-			<ui:Label text="Harrison Hancock:" class="label-name"/>
-			<ui:Label text="- Age: 42" class="label-details" name="label_age_harrison"/>
-			<ui:Label text="- Address: 88 Well Lane" class="label-details" name="label_address_harrison"/>
-			<ui:Label text="- Profession: Microbiologist" class="label-details" name="label_profession_harrison"/>
-			<ui:Label text="- Phone Number: 78 8012 4064" class="label-details" name="label_number_harrison"/>
-		</ui:VisualElement>
-		<ui:VisualElement class="page" name="page_two">
-			<ui:VisualElement class="header" name="header">
-				<ui:Label text="Details" class="label-title" name="label_title"/>
+			<ui:VisualElement class="page" name="page_two">
+				<ui:VisualElement class="header" name="header">
+					<ui:Label text="Details" class="label-title" name="label_title"/>
+				</ui:VisualElement>
+				<ui:Label text="Time of Death: 9:08 PM" class="label-name"/>
+				<ui:Label text="Last Calls:" class="label-name"/>
+				<ui:Label text="- [07:20 PM] 78 8012 4064" class="label-details"/>
+				<ui:Label text="- [07:34 PM] 78 3019 9001" class="label-details"/>
+				<ui:Label text="- [08:50 PM] 70 6655 7349" class="label-details"/>
+				<ui:Label text="- [10:23 PM] 70 6655 7349" class="label-details"/>
+				<ui:Label text="Other Details:" class="label-name"/>
+				<ui:Label text="- Anna is Scott's student." class="label-details"/>
+				<ui:Label text="- Scott is married to Brooke Baker." class="label-details"/>
+				<ui:Label text="- Scott and Jacob were spotted fighting a few days prior." class="label-details"/>
 			</ui:VisualElement>
-			<ui:Label text="Time of Death: 9:08 PM" class="label-name"/>
-			<ui:Label text="Last Calls:" class="label-name"/>
-			<ui:Label text="- [07:20] PM 78 8012 4064" class="label-details"/>
-			<ui:Label text="- [07:34] PM 78 3019 9001" class="label-details"/>
-			<ui:Label text="- [08:50] PM 70 6655 7349" class="label-details"/>
-			<ui:Label text="- [10:23] PM 70 6655 7349" class="label-details"/>
-			<ui:Label text="Other Details:" class="label-name"/>
-			<ui:Label text="- Anna is Scott's student." class="label-details"/>
-			<ui:Label text="- Scott is married to Brooke Baker." class="label-details"/>
-			<ui:Label text="- Scott and Jacob were spotted fighting a few days prior." class="label-details"/>
-		</ui:VisualElement>
-		<ui:VisualElement class="footer" name="footer">
-			<ui:Button text="◀" class="button-prev" name="button_prev"/>
-			<ui:Label text="(1/2)" class="current-page" name="label_page"/>
-			<ui:Button text="▶" class="button-next" name="button_next"/>
-		</ui:VisualElement>
+			<ui:VisualElement class="page" name="page_three">
+				<ui:VisualElement class="header" name="header">
+					<ui:Label text="Suspects" class="label-title" name="label_title"/>
+				</ui:VisualElement>
+				<ui:Label text="Mary Antoinette:" class="label-name"/>
+				<ui:Label text="- Age: 46" class="label-details" name="label_age_anna"/>
+				<ui:Label text="- Neighbour of Daniel's" class="label-details" name="label_address_anna"/>
+				<ui:Label text="- Profession: Surgeon" class="label-details" name="label_profession_anna"/>
+				<ui:Label text="Jared Brown:" class="label-name"/>
+				<ui:Label text="- Age: 38" class="label-details" name="label_age_jacob"/>
+				<ui:Label text="- Address: 12 Yorkstud Rd." class="label-details" name="label_address_jacob"/>
+				<ui:Label text="- Profession: Repairman" class="label-details" name="label_profession_jacob"/>
+				<ui:Label text="Olivia Webb:" class="label-name"/>
+				<ui:Label text="- Age: 20" class="label-details" name="label_age_harrison"/>
+				<ui:Label text="- Address: 22 Saint James St." class="label-details" name="label_address_harrison"/>
+				<ui:Label text="- Profession: Student" class="label-details" name="label_profession_harrison"/>
+			</ui:VisualElement>
+			<ui:VisualElement class="footer" name="footer">
+				<ui:Button text="◀" class="button-prev" name="button_prev"/>
+				<ui:Label text="(1/3)" class="current-page" name="label_page"/>
+				<ui:Button text="▶" class="button-next" name="button_next"/>
+			</ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

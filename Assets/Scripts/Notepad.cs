@@ -15,13 +15,14 @@ public class Notepad : MonoBehaviour
 	private VisualElement _root;
 	private VisualElement _pageOne;
 	private VisualElement _pageTwo;
+	private VisualElement _pageThree;
 	private Label _pageDisplay;
 	private Button _prevButton;
 	private Button _nextButton;
 	private AudioSource _audioSource;
 	private float _slideDuration = 0.3f;
 	private int _currentPage = 1;
-	private int _totalPages = 2;
+	private int _totalPages = 3;
 	private bool _isShown = false;
 
     void Start()
@@ -30,6 +31,7 @@ public class Notepad : MonoBehaviour
 
 		_pageOne = _root.Q<VisualElement>("page_one");
 		_pageTwo = _root.Q<VisualElement>("page_two");
+		_pageThree = _root.Q<VisualElement>("page_three");
 
 		_prevButton = _root.Q<VisualElement>("footer").Q<Button>("button_prev");
 		_prevButton.clickable.clicked += () =>
@@ -49,6 +51,10 @@ public class Notepad : MonoBehaviour
 
 		RefreshButtons();
 
+		_pageOne.style.display = DisplayStyle.None;
+		_pageTwo.style.display = DisplayStyle.None;
+		_pageThree.style.display = DisplayStyle.None;
+
 		_audioSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -57,7 +63,7 @@ public class Notepad : MonoBehaviour
 
     private void Toggle(InputAction.CallbackContext context)
     {
-		if (!GameManager.Instance.canShowNotepad) return;
+		if (GameManager.Instance.inDialogue) return;
 		if (SettingsMenu.Instance.isPaused) return;
 
 		if (!_isShown) StartSlideUp();
@@ -72,6 +78,8 @@ public class Notepad : MonoBehaviour
 	IEnumerator SlideUp()
 	{
 		playerController.DisableMoving();
+
+		RefreshPage();
 
 		_audioSource.clip = noteBookUpSFX;
 		_audioSource.Play();
@@ -98,11 +106,14 @@ public class Notepad : MonoBehaviour
 
 		_isShown = true;
 
-		if (!GameManager.Instance.hasOpenedNotepad)
+		if (GameManager.Instance.hasTalked)
 		{
-			GameManager.Instance.obu.HideObjective();
-			GameManager.Instance.obu.UpdateObjective();
-			GameManager.Instance.hasOpenedNotepad = true;
+			if (!GameManager.Instance.hasOpenedNotepad)
+			{
+				GameManager.Instance.obu.HideObjective();
+				GameManager.Instance.obu.UpdateObjective();
+				GameManager.Instance.hasOpenedNotepad = true;
+			}
 		}
 	}
 
@@ -145,6 +156,26 @@ public class Notepad : MonoBehaviour
 
 	void RefreshPage()
 	{
+		_totalPages = GameManager.Instance?.currentScene switch
+		{
+			GameManager.Scenes.CITY => 2,
+			GameManager.Scenes.CITY_VOID => 2,
+			GameManager.Scenes.APARTMENT => 3,
+			GameManager.Scenes.APARTMENT_VOID => 3,
+			_ => 1,
+		};
+
+		if (!GameManager.Instance.hasTalked || _totalPages == 1)
+		{
+			_pageOne.style.display = DisplayStyle.None;
+			_pageTwo.style.display = DisplayStyle.None;
+			_pageThree.style.display = DisplayStyle.None;
+			_pageDisplay.text = "(1/1)";
+			_prevButton.SetEnabled(false);
+			_nextButton.SetEnabled(false);
+			return;
+		}
+
 		_pageOne.style.display = _currentPage switch 
 		{
 			1 => DisplayStyle.Flex,
@@ -154,6 +185,12 @@ public class Notepad : MonoBehaviour
 		_pageTwo.style.display = _currentPage switch 
 		{
 			2 => DisplayStyle.Flex,
+			_ => DisplayStyle.None,
+		};
+
+		_pageThree.style.display = _currentPage switch 
+		{
+			3 => DisplayStyle.Flex,
 			_ => DisplayStyle.None,
 		};
 

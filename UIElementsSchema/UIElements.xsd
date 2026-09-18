@@ -5,6 +5,7 @@
   <xs:import schemaLocation="UnityEditor.Rendering.xsd" namespace="UnityEditor.Rendering" />
   <xs:import schemaLocation="Unity.GraphToolkit.ItemLibrary.Editor.xsd" namespace="Unity.GraphToolkit.ItemLibrary.Editor" />
   <xs:import schemaLocation="Unity.GraphToolkit.Editor.xsd" namespace="Unity.GraphToolkit.Editor" />
+  <xs:include schemaLocation="GlobalNamespace.xsd" />
   <xs:import schemaLocation="Unity.UIToolkit.Editor.xsd" namespace="Unity.UIToolkit.Editor" />
   <xs:import schemaLocation="UnityEditor.UIElements.Debugger.xsd" namespace="UnityEditor.UIElements.Debugger" />
   <xs:import schemaLocation="Unity.UI.Builder.xsd" namespace="Unity.UI.Builder" />

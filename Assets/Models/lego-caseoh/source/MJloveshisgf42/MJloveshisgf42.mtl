@@ -1,0 +1,58 @@
+newmtl Player1Mtl
+Material Color
+Ka 0.898039 0.894118 0.87451
+Kd 0.898039 0.894118 0.87451
+Ks 0.0774779 0.0771396 0.0754479 
+
+d 1
+
+Ns 0
+
+map_Ka MJloveshisgf421Tex.png
+map_Kd MJloveshisgf421Tex.png
+map_d MJloveshisgf421Tex.png
+
+map_Ns MJloveshisgf422Tex.png
+
+newmtl Handle3Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MJloveshisgf424Tex.png
+map_Kd MJloveshisgf424Tex.png
+map_d MJloveshisgf424Tex.png
+
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MJloveshisgf423Tex.png
+map_Kd MJloveshisgf423Tex.png
+map_d MJloveshisgf423Tex.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MJloveshisgf425Tex.png
+map_Kd MJloveshisgf425Tex.png
+map_d MJloveshisgf425Tex.png
+
