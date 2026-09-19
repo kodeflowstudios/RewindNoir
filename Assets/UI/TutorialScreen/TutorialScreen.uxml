@@ -1,0 +1,29 @@
+<ui:UXML
+  xmlns:ui="UnityEngine.UIElements"
+  xmlns:uie="UnityEditor.UIElements"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  engine="UnityEngine.UIElements"
+  editor="UnityEditor.UIElements"
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd"
+  editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TutorialScreen/TutorialScreen.uss"/>
+    <ui:VisualElement class="main-container" name="Results">
+
+		<ui:VisualElement name="credits-content" class="credits-content">
+
+			<ui:Label text="CONTROLS" class="credits-header"/>
+			<ui:Label text="WASD — Movement" class="credits-entry"/>
+			<ui:Label text="Mouse — Look Around" class="credits-entry"/>
+			<ui:Label text="E — Interact" class="credits-entry"/>
+			<ui:Label text="R — Tranverse the Void" class="credits-entry"/>
+			<ui:Label text="F — Toggle Phone (If ringing)" class="credits-entry"/>
+			<ui:Label text="TAB — Toggle Notepad" class="credits-entry"/>
+
+		</ui:VisualElement>
+
+        <ui:VisualElement class="buttons-container" name="container_buttons">
+            <ui:Button text="Continue" name="button_continue"/>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -16,15 +16,60 @@ public class DialogueHandler : MonoBehaviour
 	public List<AudioClip> dialogueClips;
 	public UIDocument resultScreen;
 	public UIToolKitHandler uiToolKitHandler;
+	public InputActionReference cancelAction;
 	ParleyYaml parleyYaml;
 
 	private InputAction nextDialogueInput;
 
-	void Start()
+	void OnEnable()
+	{
+		cancelAction.action.performed += CancelDialogue;
+	}
+
+	void OnDisable()
+	{
+		cancelAction.action.performed -= CancelDialogue;
+	}
+
+    private void CancelDialogue(InputAction.CallbackContext context)
+    {
+		if (!GameManager.Instance.hasTalked)
+		{
+			string objective;
+
+			switch (GameManager.Instance.currentScene)
+			{
+				case GameManager.Scenes.CITY:
+					objective = "node_1";
+					break;
+				case GameManager.Scenes.CITY_VOID:
+					objective = "node_1";
+					break;
+				case GameManager.Scenes.APARTMENT:
+					objective = "";
+					break;
+				default:
+					objective = "";
+					break;
+			}
+			GameManager.Instance.obu.UpdateObjective(objective);
+			GameManager.Instance.hasTalked = true;
+		}
+
+		playerController.EnableMoving();
+		uiToolKitHandler.HideElements();
+		uiToolKitHandler.ClearChoiceButtons();
+
+		GameManager.Instance.inDialogue = false;
+		GameManager.Instance.obu.ShowObjective();
+    }
+
+    void Start()
 	{
 		uiToolKitHandler.HideElements();
 		resultScreen.rootVisualElement.style.display = DisplayStyle.None;
-		GameManager.Instance?.LoadDialogue(folderName, fileName);
+		if (GameManager.Instance?.npcDialogue == null)
+			GameManager.Instance?.LoadDialogue(folderName, fileName);
 		parleyYaml = GameManager.Instance?.npcDialogue;
 	}
 

@@ -1,0 +1,111 @@
+* {
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
+:root {
+	display: none;
+}
+
+.main-container {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	padding-left: 3%;
+	padding-right: 3%;
+	flex-direction: column;
+}
+
+.title {
+	color: white;
+	margin-top: 1%;
+	font-size: 110px;
+	-unity-font-style: bold;
+	-unity-text-align: upper-center;
+}
+
+/* Buttons side by side */
+.buttons-container {
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	height: auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-bottom: 100px;
+}
+
+Button {
+	padding: 3%;
+	font-size: 30px;
+	color: #FFD787;
+	width: 500px;
+	height: 130px;
+	margin-bottom: 30px;
+	border-color: transparent;
+	background-color: transparent;
+	text-shadow: 0 10px 0 black;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonNormal9-Slice);
+}
+
+Button:hover {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonHovered9-Slice);
+}
+
+Button:active {
+	background-image: url(/Assets/Images/OrnateUI/GreenboyUISheet.png#buttonPressed9-Slice);
+}
+
+Button:focus {
+	border-color: transparent;
+}
+
+/* Scroller fills the remaining space */
+#credits-scroll {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.credits-content {
+	margin: auto;
+	align-items: center;
+	width: 100%;
+}
+
+.credits-header {
+	font-size: 56px;
+	color: #E8C547;
+	-unity-font-style: bold;
+	margin-bottom: 20px;
+}
+
+.credits-role {
+	font-size: 30px;
+	color: navajowhite;
+	margin-top: 14px;
+}
+
+.credits-name {
+	font-size: 40px;
+	color: white;
+	-unity-font-style: bold;
+	white-space: normal;
+	-unity-text-align: upper-center;
+}
+
+.credits-entry {
+	font-size: 40px;
+	color: white;
+	white-space: normal;
+	-unity-text-align: upper-center;
+	margin-top: 8px;
+	-unity-font-definition: url(/Assets/Fonts/PixelAE-Regular.ttf);
+}
+
+.credits-small {
+	font-size: 24px;
+	color: navajowhite;
+	white-space: normal;
+	-unity-text-align: upper-center;
+	margin-top: 8px;
+}
