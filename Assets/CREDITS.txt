@@ -1,0 +1,107 @@
+<size=48><b>YOUR GAME TITLE</b></size>
+
+
+<size=34><color=#E8C547><b>CREATED BY</b></color></size>
+
+Programming
+<b>Ahmed El Kadii</b>
+
+Game Design & Writing
+<b>Ahmed El Kadii</b>
+
+Level Design
+<b>Ahmed El Kadii</b>
+
+
+<size=34><color=#E8C547><b>3D MODELS</b></color></size>
+<size=22>Licensed under CC BY 4.0 (creativecommons.org/licenses/by/4.0)</size>
+
+<b>Caution Tapes</b> by AMINE
+skfb.ly/oCUMo
+
+<b>Fall Investigation Scene</b> by mira9
+skfb.ly/pB6LU
+
+<b>Low Poly Knife</b> by GGklin
+skfb.ly/6SJH8
+
+<b>Hotel</b> by TerComics
+skfb.ly/oPJUL
+
+<b>Coffee Cup [Low Poly]</b> by smakologg
+skfb.ly/oVxCK
+
+<b>Low Poly Apartment</b> by Wardster
+skfb.ly/oQM7U
+
+<b>Lego Caseoh</b> by Mr Supreme
+skfb.ly/p7QOW
+
+<b>Sam</b> by mrsirsquishy
+skfb.ly/os8yS
+
+<b>Low Poly Sun</b> by herrwoland
+skfb.ly/6AnBn
+
+<b>Hand (Low Poly)</b> by scribbletoad
+skfb.ly/Dr9p
+
+<b>Low-Poly Browning BDM</b> by TastyTony
+skfb.ly/o7DnV
+
+<b>Female Bag Free Low-Poly</b> by emi-elve-3d
+cgtrader.com/designers/emi-elve-3d
+
+<b>Low Poly Household Item Pack</b> by lowpolyassets
+lowpolyassets.itch.io/low-poly-household-item-pack
+
+<b>Characters PSX</b> by elbolilloduro
+elbolilloduro.itch.io/characters-psx
+
+<b>Nokia 3310</b> preview image by The Djon
+renderhub.com/the-djon/nokia-3310
+
+
+<size=34><color=#E8C547><b>DIALOGUE SYSTEM</b></color></size>
+
+Parley by KodeFlow Studios
+
+
+<size=34><color=#E8C547><b>TEXTURES & IMAGES</b></color></size>
+
+Red Texture by Vecteezy
+Glass Texture by rawpixel.com via Magnific
+Fabric Texture by nikitabuida via Magnific
+Image by Tess Laughlin via Pixabay
+
+
+<size=34><color=#E8C547><b>MUSIC</b></color></size>
+
+MondaMusic
+via Pixabay
+
+
+<size=34><color=#E8C547><b>SOUND EFFECTS</b></color></size>
+
+freesound_community
+Clifford Johnson
+floraphonic
+Jurij
+DRAGON-STUDIO
+u_z31mph1yzr
+<size=22>via Pixabay</size>
+
+40 Free PSX Crunchy Footsteps
+by hazardpay
+hazardpay.itch.io/40-free-psx-crunchy-footsteps
+
+
+<size=34><color=#E8C547><b>SPECIAL THANKS</b></color></size>
+
+Friends & family for playtesting and support
+
+And most of all,
+<b>You, for playing.</b>
+
+
+<size=22>© 2026 KodeFlow Studios</size>

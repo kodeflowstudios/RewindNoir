@@ -1,0 +1,97 @@
+* {
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
+:root {
+	display: flex;
+}
+
+.main-container {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	padding-left: 3%;
+	padding-right: 3%;
+	flex-direction: column;
+}
+
+.title {
+	color: white;
+	margin-top: 1%;
+	font-size: 110px;
+	-unity-font-style: bold;
+	-unity-text-align: upper-center;
+}
+
+/* Buttons side by side */
+.buttons-container {
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	height: auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-bottom: 20px;
+}
+
+Button {
+	padding: 1.5%;
+	font-size: 44px;
+	width: 30%;
+	height: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+Button:focus {
+	border-color: transparent;
+}
+
+/* Scroller fills the remaining space */
+#credits-scroll {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.credits-content {
+	align-items: center;
+	width: 100%;
+}
+
+.credits-header {
+	font-size: 56px;
+	color: #E8C547;
+	-unity-font-style: bold;
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+.credits-role {
+	font-size: 30px;
+	color: navajowhite;
+	margin-top: 14px;
+}
+
+.credits-name {
+	font-size: 40px;
+	color: white;
+	-unity-font-style: bold;
+	white-space: normal;
+	-unity-text-align: upper-center;
+}
+
+.credits-entry {
+	font-size: 32px;
+	color: white;
+	white-space: normal;
+	-unity-text-align: upper-center;
+	margin-top: 8px;
+}
+
+.credits-small {
+	font-size: 24px;
+	color: navajowhite;
+	white-space: normal;
+	-unity-text-align: upper-center;
+	margin-top: 8px;
+}

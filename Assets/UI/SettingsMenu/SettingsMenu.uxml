@@ -17,7 +17,7 @@
         <ui:Label text="Settings" class="title" name="label_settings"/>
         <ui:VisualElement class="settings-items-container" name="settings_items_container">
 			<ui:Slider label="Sensitivity" name="slider_sens" low-value="0.2" high-value="10"/>
-			<ui:DropdownField label="Language" name="dropdown_lang"/>
+			<ui:DropdownField label="Language" name="dropdown_lang" style="display: none;"/>
         </ui:VisualElement>
 		<ui:Button text="Back" name="button_back"/>
     </ui:VisualElement>

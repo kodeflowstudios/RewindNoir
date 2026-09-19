@@ -24,7 +24,29 @@ public class SceneSwitcher : MonoBehaviour
 			"CityVoid" => GameManager.Scenes.CITY_VOID,
 			"Apartment" => GameManager.Scenes.APARTMENT,
 			"ApartmentVoid" => GameManager.Scenes.APARTMENT_VOID,
+			"SpaceTime" => GameManager.Scenes.SPACE_TIME,
 			_ => GameManager.Instance.currentScene
 		};
+	}
+
+	public static void ReloadScene()
+	{
+		string sceneToLoad = GameManager.Instance.currentScene switch
+		{
+			GameManager.Scenes.MAIN_MENU => "MainMenu",
+			GameManager.Scenes.INTRO => "Intro",
+			GameManager.Scenes.CITY => "City",
+			GameManager.Scenes.CITY_VOID => "CityVoid",
+			GameManager.Scenes.APARTMENT => "Apartment",
+			GameManager.Scenes.APARTMENT_VOID => "ApartmentVoid",
+			_ => null
+		};
+
+		var loading = SceneManager.LoadSceneAsync(sceneToLoad);
+		if (loading == null)
+		{
+			Debug.LogError($"Failed to load scene: {sceneToLoad}");
+			return;
+		}
 	}
 }

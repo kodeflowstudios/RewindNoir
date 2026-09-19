@@ -1,0 +1,107 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  node_1:
+    Speaker: "???"
+    Text: "Well look who finally made it!"
+    Choices:
+      - Text: "What now.. who are you?"
+        NextNode: node_2
+  node_2:
+    Speaker: "Gideon"
+    Text: "I'm Gideon, I made device that brought you all of this mess."
+    Choices:
+      - Text: "What on earth is going on?"
+        NextNode: node_3
+  node_3:
+    Speaker: "Gideon"
+    Text: "Well.. we're not really earth haha."
+    Choices:
+      - Text: "..."
+        NextNode: node_4
+  node_4:
+    Speaker: "Gideon"
+    Text: "The device that you have been using was forged around the prime of the Ottoman Empire."
+    NextNode: node_5
+  node_5:
+    Speaker: "Gideon"
+    Text: "It's sole purpose was to take freeze frames of reality that you could revisit. Similar to what you earthers call Photographs"
+    NextNode: node_6
+  node_6:
+    Speaker: "Gideon"
+    Text: "Unfortunately since the device was very rare and priceless, many people wanted to steal it."
+    NextNode: node_7
+  node_7:
+    Speaker: "Gideon"
+    Text: "In comes Abbas. This guy was a renowned magician and dealer of whichcraft."
+    NextNode: node_8
+  node_8:
+    Speaker: "Gideon"
+    Text: "This Abbas made a deal with the devil to get the device for himself so he can use it for evil"
+    NextNode: node_9
+  node_9:
+    Speaker: "Gideon"
+    Text: "He managed to get it but when he did, the devil didn't keep up his side of the bargain, no."
+    NextNode: node_10
+  node_10:
+    Speaker: "Gideon"
+    Text: "He went and trapped Abbas inside the device as a forever protector of it named Minimett, making him into what you were chased by."
+    Choices:
+      - Text: "Ok but.. what happened to me? Where am I and how did all of this happen?"
+        NextNode: node_11
+  node_11:
+    Speaker: "Gideon"
+    Text: "The magic on the device is fading, and with it its stability. What you experienced was the shear instability of the demonic energy inside of it."
+    Choices:
+      - Text: "What does that mean?"
+        NextNode: node_12
+  node_12:
+    Speaker: "Gideon"
+    Text: "What it means is that this device is ripping up the very fabric of reality. Every time it was used it wasn't acutaully taking a snapshot that you could revisit."
+    NextNode: node_13
+  node_13:
+    Speaker: "Gideon"
+    Text: "It was creating a pocket universe. A branch of the main timeline that you lived on."
+    Choices:
+      - Text: "Lived.. Am I dead?"
+        NextNode: node_14
+  node_14:
+    Speaker: "Gideon"
+    Text: "Yes and No.. Your soul is in this realm, but your timeline no longer exists."
+    Choices:
+      - Text: "Does that mean I could never go back?"
+        NextNode: node_15
+  node_15:
+    Speaker: "Gideon"
+    Text: "Not quite. You can go back to A timeline but not yours anymore."
+    Choices:
+      - Text: "What happens if I choose to go back?"
+        NextNode: node_16
+  node_16:
+    Speaker: "Gideon"
+    Text: "You'd basically be ripping another you from their reality—practically killing him—and returning in his stead."
+    Choices:
+      - Text: "Do I have another option?"
+        NextNode: node_17
+  node_17:
+    Speaker: "Gideon"
+    Text: "You could die."
+    Choices:
+      - Text: "..."
+        NextNode: node_18
+  node_18:
+    Speaker: "Gideon"
+    Text: "Yeah... Make your choice."
+    Choices:
+      - Text: "I want to go back"
+        SetFlags:
+          - go_back
+        NextNode: node_19
+      - Text: "I want to die"
+        SetFlags:
+          - die
+        NextNode: node_19
+  node_19:
+    Speaker: "Gideon"
+    Text: "Very well..."

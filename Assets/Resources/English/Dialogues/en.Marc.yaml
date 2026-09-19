@@ -98,7 +98,6 @@ Dialogue:
       - Text: "Harrison"
         SetFlags:
           - selected
-          - correct
         NextNode: node_12
       - Text: "I don't know..."
         NextNode: node_11

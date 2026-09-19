@@ -1,0 +1,26 @@
+* {
+	flex-shrink: 1;
+	-unity-font-style: bold;
+	-unity-font-definition: url(/Assets/Fonts/High_Birth.ttf);
+}
+
+:root {
+	display: none;
+}
+
+.frame {
+	width: 900px;
+	height: 900px;
+	margin: auto;
+	flex-direction: column;
+	align-self: center;
+	-unity-background-image-tint-color: rgb(71, 90, 152);
+	background-image: url(/Assets/Images/nokia-phone.png);
+}
+
+Label {
+	margin-top: 30px;
+	font-size: 50px;
+	align-self: center;
+	color: rgb(151, 158, 185);
+}

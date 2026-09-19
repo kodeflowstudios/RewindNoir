@@ -2331,6 +2331,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38b21d2c05035487cb56623ff247b028, type: 3}
   playerController: {fileID: 277183963}
   uiToolKitHandler: {fileID: 468501535}
+  m_OnFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &452233365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3650,7 +3653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &685317711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6727,7 +6730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1133370697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7064,6 +7067,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5bda08196922443d9a30f2f394924438, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1290453886}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5bda08196922443d9a30f2f394924438, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1290453892}
   m_SourcePrefab: {fileID: 100100000, guid: 5bda08196922443d9a30f2f394924438, type: 3}
 --- !u!1 &1290453885 stripped
 GameObject:
@@ -7097,6 +7103,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5bda08196922443d9a30f2f394924438, type: 3}
   m_PrefabInstance: {fileID: 1290453884}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1290453892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290453885}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 66fbc0d25816b40118af75eb3da85a16, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1313304456
 GameObject:
   m_ObjectHideFlags: 0
@@ -8705,6 +8808,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a1023e17b97a9434fbcf6a79041a20c9, type: 3}
   playerController: {fileID: 277183963}
   uiToolKitHandler: {fileID: 468501535}
+  m_OnFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &1499891166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9471,6 +9577,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38b21d2c05035487cb56623ff247b028, type: 3}
   playerController: {fileID: 277183963}
   uiToolKitHandler: {fileID: 468501535}
+  m_OnFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &1744117035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10333,7 +10442,7 @@ Camera:
   m_GameObject: {fileID: 1882156681}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -11284,6 +11393,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a1023e17b97a9434fbcf6a79041a20c9, type: 3}
   playerController: {fileID: 277183963}
   uiToolKitHandler: {fileID: 468501535}
+  m_OnFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2075743014
 BoxCollider:
   m_ObjectHideFlags: 0

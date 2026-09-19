@@ -29,6 +29,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ApartmentVoid.unity
     guid: ab3e008965f0146a184348aa267e610f
+  - enabled: 1
+    path: Assets/Scenes/SpaceTime.unity
+    guid: cc955606147f94e65ae75c37329be499
+  - enabled: 1
+    path: Assets/Scenes/CityAlt.unity
+    guid: fdc12c2714a724f209ffdbd962cbb61d
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: ab15ece185e7a46fa8eca57b830b946a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

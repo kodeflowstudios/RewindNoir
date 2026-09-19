@@ -103,10 +103,11 @@ public class DialogueHandler : MonoBehaviour
 
 		GameManager.Instance.obu.ShowObjective();
 
-		GameManager.Instance.choseRight = parleyYaml.Flags.IsFlagSet("correct");
-
-		if (parleyYaml.Flags.IsFlagSet("selected"))
+		if (parleyYaml.Flags.IsFlagSet("selected") && GameManager.Instance.currentScene == GameManager.Scenes.CITY)
 		{
+			GameManager.Instance.hasTalked = false;
+			GameManager.Instance.inDialogue = false;
+			GameManager.Instance.enteredEntropy = false;
 			SceneSwitcher.SwitchScene("Apartment");
 		}
 	}

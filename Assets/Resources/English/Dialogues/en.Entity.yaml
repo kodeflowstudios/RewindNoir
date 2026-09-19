@@ -1,0 +1,31 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  node_1:
+    Speaker: "???"
+    Text: "Detective! We've found some more details on the case."
+    Choices:
+      - Text: "Marc?"
+        NextNode: node_2
+  node_2:
+    Speaker: "Marc"
+    Text: "Yeah, we found evidence incriminating Harrison and proving he's the killer!"
+    Choices:
+      - Text: "How are you contacting me...? I'm inside the void how is my phone working?"
+        NextNode: node_3
+  node_3:
+    Speaker: "Marc"
+    Text: "..."
+    NextNode: node_4
+  node_4:
+    Speaker: "Marc"
+    Text: "..."
+    NextNode: node_5
+  node_5:
+    Speaker: "Marc"
+    Text: "..."
+    NextNode: node_6
+  node_6:
+    Speaker: "Marc..?"
+    Text: "You shouldn't have said that, detective..."

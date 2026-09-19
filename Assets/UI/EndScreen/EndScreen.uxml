@@ -1,0 +1,75 @@
+<ui:UXML
+  xmlns:ui="UnityEngine.UIElements"
+  xmlns:uie="UnityEditor.UIElements"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  engine="UnityEngine.UIElements"
+  editor="UnityEditor.UIElements"
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd"
+  editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/EndScreen/EndScreen.uss"/>
+    <ui:VisualElement class="main-container" name="Results">
+
+        <ui:Label text="Fin." class="title" name="label_result"/>
+
+        <ui:VisualElement class="buttons-container" name="container_buttons">
+            <ui:Button text="Return to Menu" name="button_main_menu"/>
+            <ui:Button text="Quit" name="button_quit"/>
+        </ui:VisualElement>
+
+        <ui:ScrollView name="credits-scroll" vertical-scroller-visibility="Hidden">
+            <ui:VisualElement name="credits-content" class="credits-content">
+
+                <ui:Label text="CREATED BY" class="credits-header"/>
+                <ui:Label text="Programming" class="credits-role"/>
+                <ui:Label text="Ahmed El Kadii" class="credits-name"/>
+                <ui:Label text="Game Design &amp; Writing" class="credits-role"/>
+                <ui:Label text="Ahmed El Kadii" class="credits-name"/>
+                <ui:Label text="Level Design" class="credits-role"/>
+                <ui:Label text="Ahmed El Kadii" class="credits-name"/>
+
+                <ui:Label text="3D MODELS" class="credits-header"/>
+                <ui:Label text="Licensed under CC BY 4.0 (creativecommons.org/licenses/by/4.0)" class="credits-small"/>
+                <ui:Label text="Caution Tapes by AMINE (skfb.ly/oCUMo)" class="credits-entry"/>
+                <ui:Label text="Fall Investigation Scene by mira9 (skfb.ly/pB6LU)" class="credits-entry"/>
+                <ui:Label text="Low Poly Knife by GGklin (skfb.ly/6SJH8)" class="credits-entry"/>
+                <ui:Label text="Hotel by TerComics (skfb.ly/oPJUL)" class="credits-entry"/>
+                <ui:Label text="Coffee Cup [Low Poly] by smakologg (skfb.ly/oVxCK)" class="credits-entry"/>
+                <ui:Label text="Low Poly Apartment by Wardster (skfb.ly/oQM7U)" class="credits-entry"/>
+                <ui:Label text="Lego Caseoh by Mr Supreme (skfb.ly/p7QOW)" class="credits-entry"/>
+                <ui:Label text="Sam by mrsirsquishy (skfb.ly/os8yS)" class="credits-entry"/>
+                <ui:Label text="Low Poly Sun by herrwoland (skfb.ly/6AnBn)" class="credits-entry"/>
+                <ui:Label text="Hand (Low Poly) by scribbletoad (skfb.ly/Dr9p)" class="credits-entry"/>
+                <ui:Label text="Low-Poly Browning BDM by TastyTony (skfb.ly/o7DnV)" class="credits-entry"/>
+                <ui:Label text="Female Bag Free Low-Poly by emi-elve-3d (cgtrader.com/designers/emi-elve-3d)" class="credits-entry"/>
+                <ui:Label text="Low Poly Household Item Pack by lowpolyassets (lowpolyassets.itch.io)" class="credits-entry"/>
+                <ui:Label text="Characters PSX by elbolilloduro (elbolilloduro.itch.io/characters-psx)" class="credits-entry"/>
+                <ui:Label text="Nokia 3310 preview image by The Djon (renderhub.com/the-djon/nokia-3310)" class="credits-entry"/>
+
+                <ui:Label text="DIALOGUE SYSTEM" class="credits-header"/>
+                <ui:Label text="Parely by KodeFlow Studios" class="credits-entry"/>
+
+                <ui:Label text="TEXTURES &amp; IMAGES" class="credits-header"/>
+                <ui:Label text="Red Texture by Vecteezy" class="credits-entry"/>
+                <ui:Label text="Glass Texture by rawpixel.com via Magnific" class="credits-entry"/>
+                <ui:Label text="Fabric Texture by nikitabuida via Magnific" class="credits-entry"/>
+                <ui:Label text="Image by Tess Laughlin via Pixabay" class="credits-entry"/>
+
+                <ui:Label text="MUSIC" class="credits-header"/>
+                <ui:Label text="MondaMusic via Pixabay" class="credits-entry"/>
+
+                <ui:Label text="SOUND EFFECTS" class="credits-header"/>
+                <ui:Label text="freesound_community, Clifford Johnson, floraphonic," class="credits-entry"/>
+                <ui:Label text="Jurij, DRAGON-STUDIO, u_z31mph1yzr via Pixabay" class="credits-entry"/>
+                <ui:Label text="40 Free PSX Crunchy Footsteps by hazardpay (hazardpay.itch.io)" class="credits-entry"/>
+
+                <ui:Label text="SPECIAL THANKS" class="credits-header"/>
+                <ui:Label text="Friends &amp; family for playtesting and support" class="credits-entry"/>
+                <ui:Label text="And most of all, you, for playing." class="credits-name"/>
+
+                <ui:Label text="© 2026 KodeFlow Studios" class="credits-small"/>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+</ui:UXML>

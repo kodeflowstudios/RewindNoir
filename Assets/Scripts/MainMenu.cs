@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+		if (GameManager.Instance != null) Destroy(GameManager.Instance);
 		if (SettingsMenu.Instance.mainMenu == null) SettingsMenu.Instance.mainMenu = GetComponent<UIDocument>();
 
 		settingsMenu.rootVisualElement.style.display = DisplayStyle.None;

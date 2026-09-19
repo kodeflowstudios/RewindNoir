@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float crouchingTransitionSpeed = 10f;
 	[SerializeField] private float cameraOffset = 0.4f;
 
-
 	[Header("Refs")]
 	[SerializeField] private Transform cameraTransform;
 	[SerializeField] private CinemachineInputAxisController camController;

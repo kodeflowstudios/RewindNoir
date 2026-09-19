@@ -66,6 +66,10 @@
 	background-image: url(/Assets/Images/OrnateUI/BrownFantasyUISheet.png#mainPanel9-Slice);
 }
 
+.space {
+	background-image: url(/Assets/Images/OrnateUI/RoyalBlueUISheet.png#mainPanel9-Slice);
+}
+
 #dialogueText {
 	font-size: 33px;
 	color: rgb(227, 227, 227);

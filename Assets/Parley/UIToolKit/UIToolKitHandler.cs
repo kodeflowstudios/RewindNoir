@@ -50,6 +50,7 @@ namespace KodeFlowStudios.Parley
 			{
 				GameManager.Scenes.APARTMENT_VOID
 				| GameManager.Scenes.CITY_VOID => "void",
+				GameManager.Scenes.SPACE_TIME => "space",
 				_ => "normal"
 			});
 		}

@@ -9,9 +9,9 @@
     <Style src="project://database/Assets/UI/ResultScreen/ResultScreen.uss"/>
     <ui:VisualElement class="main-container" name="Results">
         <ui:Label text="You Won" class="title" name="label_result"/>
-        <ui:VisualElement class="buttons-container">
+        <ui:VisualElement class="buttons-container" name="container_buttons">
+            <ui:Button text="Try Again" name="button_try_again"/>
             <ui:Button text="Return to Menu" name="button_main_menu"/>
-            <ui:Button text="Quit" name="button_quit"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

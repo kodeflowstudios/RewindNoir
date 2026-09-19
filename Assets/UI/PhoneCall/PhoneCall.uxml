@@ -1,0 +1,12 @@
+<ui:UXML 
+  xmlns:ui="UnityEngine.UIElements" 
+  xmlns:uie="UnityEditor.UIElements" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  engine="UnityEngine.UIElements" 
+  editor="UnityEditor.UIElements" 
+  noNamespaceSchemaLocation="/UIElementsSchema/UIElements.xsd" 
+  editor-extension-mode="False">
+<Style src="project://database/Assets/UI/PhoneCall/PhoneCall.uss"/>
+		<ui:Label text="Answer with LEFT CLICK" name="label_hint"/>
+		<ui:VisualElement class="frame" name="phone"/>
+</ui:UXML>

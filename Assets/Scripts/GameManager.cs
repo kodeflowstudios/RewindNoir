@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 		CITY,
 		CITY_VOID,
 		APARTMENT,
-		APARTMENT_VOID
+		APARTMENT_VOID,
+		SPACE_TIME
 	}
 
 	public Scenes currentScene = Scenes.CITY;
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
 	public bool inDialogue = false;
 	public bool enteredEntropy = false;
 	public bool hasOpenedNotepad = false;
-	public bool choseRight = false;
 
 	public float _duration = 0.5f;
 	public float _fovMin = 60f;
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToNormalEnumerator()
 	{
-		obu.HideObjective();
+		obu?.HideObjective();
 
 		positionB = playerB.transform.position;
 		cineCamBPan = cinePanTiltB.PanAxis;
@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
 		{
 			Scenes.CITY_VOID => "City",
 			Scenes.APARTMENT_VOID => "Apartment",
+			Scenes.SPACE_TIME => "CityAlt",
 			_ => null
 		});
 
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour
 		c.a = 0;
 		fade.color = c;
 
-		obu.ShowObjective();
+		obu?.ShowObjective();
 	}
 
 	public void TransitionToVoid()
@@ -159,7 +160,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToVoidEnumerator()
 	{
-		obu.HideObjective();
+		obu?.HideObjective();
 
 		positionA = playerA.transform.position;
 		cineCamAPan = cinePanTiltA.PanAxis;
@@ -202,8 +203,8 @@ public class GameManager : MonoBehaviour
 
 		if (!enteredEntropy)
 		{
-			obu.UpdateObjective("entropy_tutorial");
-			obu.UpdateObjective();
+			obu?.UpdateObjective("entropy_tutorial");
+			obu?.UpdateObjective();
 			enteredEntropy = true;
 		}
 
@@ -239,7 +240,7 @@ public class GameManager : MonoBehaviour
 		c.a = 0;
 		fade.color = c;
 
-		obu.ShowObjective();
+		obu?.ShowObjective();
 
 		_isTuned = true;
 	}

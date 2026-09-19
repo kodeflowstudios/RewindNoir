@@ -12,22 +12,18 @@ public class ResultScreen : MonoBehaviour
 
 		resultLabel = _root.Q<Label>("label_result");
 
+		var retryButton = _root.Q<Button>("button_try_again");
+		retryButton.clickable.clicked += () =>
+		{
+			Time.timeScale = 1f;
+			SceneSwitcher.ReloadScene();
+		};
+
 		var menuButton = _root.Q<Button>("button_main_menu");
 		menuButton.clickable.clicked += () =>
 		{
+			Time.timeScale = 1f;
 			SceneSwitcher.SwitchScene("MainMenu");
-		};
-
-		var quitButton = _root.Q<Button>("button_quit");
-		quitButton.clickable.clicked += () =>
-		{
-#if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-			Application.OpenURL(webplayerQuitURL);
-#else
-			Application.Quit();
-#endif
 		};
     }
 
@@ -39,5 +35,6 @@ public class ResultScreen : MonoBehaviour
 		var bgColorTrans = bgColor;
 		bgColorTrans.a = 0.4f;
 		_root.style.backgroundColor = bgColorTrans;
+		Time.timeScale = 0f;
 	}
 }

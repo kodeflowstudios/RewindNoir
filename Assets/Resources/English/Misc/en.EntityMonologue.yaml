@@ -1,0 +1,36 @@
+MetaData:
+  Language: English
+  TextDirection: LTR
+Dialogue:
+  node_1:
+    Text: "Hmm..."
+    NextNode: node_2
+  node_2:
+    Text: "Do you truly think that—"
+    NextNode: node_3
+  node_3:
+    Text: "you can use and abuse my device, and not suffer?"
+    NextNode: node_4
+  node_4:
+    Text: "Did you stop to think ONCE?"
+    NextNode: node_5
+  node_5:
+    Text: "Did you stop to THANK once?"
+    NextNode: node_6
+  node_6:
+    Text: "No, you didn't! And now you question me..?"
+    NextNode: node_7
+  node_7:
+    Text: "But the beautiful thing is.. you're in here with me."
+    NextNode: node_8
+  node_8:
+    Text: "A-And you're not going out this time."
+    NextNode: node_9
+  node_9:
+    Text: "You're NEVER going out."
+    NextNode: node_10
+  node_10:
+    Text: "And I shall feast"
+    NextNode: node_11
+  node_11:
+    Text: "And you shall suffer."

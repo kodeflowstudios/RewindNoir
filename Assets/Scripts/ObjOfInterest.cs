@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using KodeFlowStudios.Parley;
 using KodeFlowStudios.Parley.Localization;
 using KodeFlowStudios.Parley.YamlCore;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ObjOfInterest : MonoBehaviour
@@ -15,8 +17,19 @@ public class ObjOfInterest : MonoBehaviour
 	public List<AudioClip> dialogueClips;
 	public PlayerController playerController;
 	public UIToolKitHandler uiToolKitHandler;
-	ParleyYaml parleyYaml;
 
+	[Serializable]
+	public class FinishedEvent : UnityEvent {}
+	[SerializeField]
+	private FinishedEvent m_OnFinish = new FinishedEvent();
+
+	public FinishedEvent OnFinish
+	{
+		get { return m_OnFinish; }
+		set { m_OnFinish = value; }
+	}
+
+	public ParleyYaml parleyYaml;
 	private InputAction nextDialogueInput;
 
 	async public void StartDialogue()
@@ -32,7 +45,7 @@ public class ObjOfInterest : MonoBehaviour
 		lookAt?.LookAtPlayer();
 		playerController.DisableMoving();
 
-		GameManager.Instance.obu.HideObjective();
+		GameManager.Instance?.obu?.HideObjective();
 
 		uiToolKitHandler.ShowElements();
 
@@ -79,14 +92,15 @@ public class ObjOfInterest : MonoBehaviour
 			}
 		}
 
-
 		lookAt?.Reset();
 		playerController.EnableMoving();
 		uiToolKitHandler.HideElements();
 
 		GameManager.Instance.inDialogue = false;
 
-		GameManager.Instance.obu.ShowObjective();
+		GameManager.Instance?.obu?.ShowObjective();
+
+		m_OnFinish.Invoke();
 	}
 
 	private void OnDestroy()
