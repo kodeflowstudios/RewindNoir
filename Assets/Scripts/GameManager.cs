@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 	public Vector3 positionB;
 	public Quaternion camRotationA;
 	public Quaternion camRotationB;
-	public ObjectiveUpdater obu;
 	public CinemachinePanTilt cinePanTiltA;
 	public CinemachinePanTilt cinePanTiltB;
 	public InputAxis cineCamAPan;
@@ -50,7 +49,6 @@ public class GameManager : MonoBehaviour
 	public Image fade;
 	public AnimationCurve animationCurve;
 	public ParleyYaml npcDialogue;
-	public ParleyYaml objectivesDialogue;
 
 	private bool _isTuned = false;
 
@@ -65,7 +63,6 @@ public class GameManager : MonoBehaviour
 			Destroy(this);
 		}
 		DontDestroyOnLoad(this);
-		objectivesDialogue = new ParleyYaml("Misc", "Objectives", Localizer.GetIDFromEnglishName(PlayerPrefs.GetString("Language")));
 	}
 
 	public PlayerController GetPlayer()
@@ -75,6 +72,43 @@ public class GameManager : MonoBehaviour
 		return null;
 	}
 
+	public void HalfTransitionToNormal()
+	{
+		StartCoroutine(TransitionToNormalEnumerator());
+	}
+
+	private IEnumerator HalfTransitionToNormalEnumerator()
+	{
+		Color c = fade.color;
+		float timeElapsed = 0;
+
+		while (timeElapsed < _duration)
+		{
+			float t = timeElapsed/_duration;
+
+			t = animationCurve.Evaluate(1-t);
+
+			cineCamB.Lens.FieldOfView = Mathf.Lerp(_fovMax, _fovMin, t);
+			c.a = Mathf.Lerp(1, 0, t);
+			fade.color = c;
+			timeElapsed += Time.deltaTime;
+
+			yield return null;
+		}
+
+		cineCamB.Lens.FieldOfView = _fovMax;
+		c.a = 1;
+		fade.color = c;
+
+		SceneSwitcher.SwitchScene(currentScene switch
+		{
+			Scenes.CITY_VOID => "City",
+			Scenes.APARTMENT_VOID => "Apartment",
+			Scenes.SPACE_TIME => "CityAlt",
+			_ => null
+		});
+	}
+
 	public void TransitionToNormal()
 	{
 		StartCoroutine(TransitionToNormalEnumerator());
@@ -82,8 +116,6 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToNormalEnumerator()
 	{
-		obu?.HideObjective();
-
 		positionB = playerB.transform.position;
 		cineCamBPan = cinePanTiltB.PanAxis;
 		cineCamBTilt = cinePanTiltB.TiltAxis;
@@ -149,8 +181,6 @@ public class GameManager : MonoBehaviour
 		cineCamA.Lens.FieldOfView = _fovMin;
 		c.a = 0;
 		fade.color = c;
-
-		obu?.ShowObjective();
 	}
 
 	public void TransitionToVoid()
@@ -160,8 +190,6 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator TransitionToVoidEnumerator()
 	{
-		obu?.HideObjective();
-
 		positionA = playerA.transform.position;
 		cineCamAPan = cinePanTiltA.PanAxis;
 		cineCamATilt = cinePanTiltA.TiltAxis;
@@ -203,8 +231,6 @@ public class GameManager : MonoBehaviour
 
 		if (!enteredEntropy)
 		{
-			obu?.UpdateObjective("entropy_tutorial");
-			obu?.UpdateObjective();
 			enteredEntropy = true;
 		}
 
@@ -239,8 +265,6 @@ public class GameManager : MonoBehaviour
 		cineCamB.Lens.FieldOfView = _fovMin;
 		c.a = 0;
 		fade.color = c;
-
-		obu?.ShowObjective();
 
 		_isTuned = true;
 	}

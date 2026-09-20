@@ -21,6 +21,15 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float crouchingTransitionSpeed = 10f;
 	[SerializeField] private float cameraOffset = 0.4f;
 
+	[Header("Footsteps")]
+	[SerializeField] private AudioClip[] footstepClips;
+	[SerializeField] private AudioSource footstepSource;
+	[SerializeField] private float walkStepInterval = 0.5f;
+	[SerializeField] private float runStepInterval = 0.35f;
+	[SerializeField] private float crouchStepInterval = 0.75f;
+	[SerializeField] private Vector2 pitchRange = new Vector2(0.9f, 1.1f);
+	[SerializeField, Range(0f, 1f)] private float footstepVolume = 0.6f;
+
 	[Header("Refs")]
 	[SerializeField] private Transform cameraTransform;
 	[SerializeField] private CinemachineInputAxisController camController;
@@ -37,6 +46,8 @@ public class PlayerController : MonoBehaviour
 	private bool _isCrouching;
 	private float _verticalVelocity;
 	private float _targetHeight;
+	private float _stepTimer;
+	private int _lastClipIndex = -1;
 
     private void Awake()
 	{
@@ -46,6 +57,22 @@ public class PlayerController : MonoBehaviour
 		_characterController = GetComponent<CharacterController>();
 		_targetHeight = standingHeight;
 
+		SetupFootsteps();
+	}
+
+	private void SetupFootsteps()
+	{
+		if (footstepClips == null || footstepClips.Length == 0)
+		{
+			footstepClips = Resources.LoadAll<AudioClip>("Footsteps");
+		}
+
+		if (footstepSource == null)
+		{
+			footstepSource = gameObject.AddComponent<AudioSource>();
+			footstepSource.playOnAwake = false;
+			footstepSource.spatialBlend = 0f;
+		}
 	}
 
 	public void UpdateSensitivity()
@@ -107,9 +134,14 @@ public class PlayerController : MonoBehaviour
 		_isGrounded = _characterController.isGrounded;
 
 		HandleGravity();
-		if (!_canMove) return;
+		if (!_canMove)
+		{
+			_stepTimer = 0f;
+			return;
+		}
 		HandleMovement();
 		HandleCrouchTransition();
+		HandleFootsteps();
     }
 
     private void StoreMovementInput(InputAction.CallbackContext context)
@@ -193,4 +225,41 @@ public class PlayerController : MonoBehaviour
 		cameraTargetPosition.y = _targetHeight - cameraOffset;
 		cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraTargetPosition, crouchingTransitionSpeed * Time.deltaTime);
     }
+
+	private void HandleFootsteps()
+	{
+		Vector3 horizontalVelocity = _characterController.velocity;
+		horizontalVelocity.y = 0;
+
+		if (!_isGrounded || horizontalVelocity.magnitude < 0.1f)
+		{
+			_stepTimer = 0f;
+			return;
+		}
+
+		float interval = _isCrouching ? crouchStepInterval : _isRunning ? runStepInterval : walkStepInterval;
+
+		_stepTimer += Time.deltaTime;
+		if (_stepTimer >= interval)
+		{
+			_stepTimer -= interval;
+			PlayFootstep();
+		}
+	}
+
+	private void PlayFootstep()
+	{
+		if (footstepClips == null || footstepClips.Length == 0 || footstepSource == null) return;
+
+		int index = 0;
+		if (footstepClips.Length > 1)
+		{
+			do { index = UnityEngine.Random.Range(0, footstepClips.Length); }
+			while (index == _lastClipIndex);
+		}
+		_lastClipIndex = index;
+
+		footstepSource.pitch = UnityEngine.Random.Range(pitchRange.x, pitchRange.y);
+		footstepSource.PlayOneShot(footstepClips[index], footstepVolume);
+	}
 }

@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
 	public UIDocument settingsMenu;
+	public UIDocument tutorialMenu;
 	private VisualElement _root;
 
     void Start()
@@ -18,7 +19,8 @@ public class MainMenu : MonoBehaviour
 		var playButton = _root.Q<Button>("button_play");
 		playButton.clickable.clicked += () =>
 		{
-			SceneSwitcher.SwitchScene("Intro");
+			_root.style.display = DisplayStyle.None;
+			tutorialMenu.rootVisualElement.style.display = DisplayStyle.Flex;
 		};
 
 		var settingsButton = _root.Q<Button>("button_settings");

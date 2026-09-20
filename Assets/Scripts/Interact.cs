@@ -30,6 +30,9 @@ public class Interact : MonoBehaviour
 				case "NPC":
 					obj.GetComponent<DialogueHandler>()?.StartDialogue();
 					break;
+				case "Transer":
+					obj.GetComponent<TransToEnd>()?.Transition();
+					break;
 				case "Object of interest":
 					obj.GetComponent<ObjOfInterest>()?.StartDialogue();
 					break;

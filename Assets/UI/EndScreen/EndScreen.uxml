@@ -9,7 +9,7 @@
     <Style src="project://database/Assets/UI/EndScreen/EndScreen.uss"/>
     <ui:VisualElement class="main-container" name="Results">
 
-        <ui:Label text="Fin." class="title" name="label_result"/>
+        <ui:Label text="The End" class="title" name="label_result"/>
 
         <ui:VisualElement class="buttons-container" name="container_buttons">
             <ui:Button text="Return to Menu" name="button_main_menu"/>

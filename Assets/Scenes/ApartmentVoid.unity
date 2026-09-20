@@ -7708,6 +7708,133 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1205660920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205660922}
+  - component: {fileID: 1205660921}
+  - component: {fileID: 1205660923}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1205660921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205660920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6d1ce317ef244ceb4641d973a34873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  currentScene: 6
+  hasTalked: 0
+  inDialogue: 0
+  enteredEntropy: 0
+  hasOpenedNotepad: 0
+  _duration: 0.5
+  _fovMin: 60
+  _fovMax: 300
+  playerA: {fileID: 0}
+  playerB: {fileID: 0}
+  positionA: {x: 0, y: 0, z: 0}
+  positionB: {x: 0, y: 0, z: 0}
+  camRotationA: {x: 0, y: 0, z: 0, w: 0}
+  camRotationB: {x: 0, y: 0, z: 0, w: 0}
+  obu: {fileID: 0}
+  cinePanTiltA: {fileID: 0}
+  cinePanTiltB: {fileID: 0}
+  cineCamAPan:
+    Value: 0
+    Center: 0
+    Range: {x: 0, y: 0}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 0
+      Time: 0
+    Restrictions: 0
+  cineCamBPan:
+    Value: 0
+    Center: 0
+    Range: {x: 0, y: 0}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 0
+      Time: 0
+    Restrictions: 0
+  cineCamATilt:
+    Value: 0
+    Center: 0
+    Range: {x: 0, y: 0}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 0
+      Time: 0
+    Restrictions: 0
+  cineCamBTilt:
+    Value: 0
+    Center: 0
+    Range: {x: 0, y: 0}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 0
+      Time: 0
+    Restrictions: 0
+  cineCamA: {fileID: 0}
+  cineCamB: {fileID: 0}
+  fade: {fileID: 0}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1205660922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205660920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 161.44861, y: 1.81053, z: 30.5782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1205660923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205660920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a368b90da1f4deda481b597c550f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsMenu
+  mainMenu: {fileID: 0}
+  isPaused: 0
+  notePadOpen: 0
+  pauseAction: {fileID: 0}
 --- !u!1 &1210226076
 GameObject:
   m_ObjectHideFlags: 0
@@ -17533,3 +17660,4 @@ SceneRoots:
   - {fileID: 1309437690}
   - {fileID: 929012860}
   - {fileID: 1832211839}
+  - {fileID: 1205660922}

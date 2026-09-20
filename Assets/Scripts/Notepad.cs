@@ -105,16 +105,6 @@ public class Notepad : MonoBehaviour
 		_root.style.marginTop = 0;
 
 		_isShown = true;
-
-		if (GameManager.Instance.hasTalked)
-		{
-			if (!GameManager.Instance.hasOpenedNotepad)
-			{
-				GameManager.Instance.obu.HideObjective();
-				GameManager.Instance.obu.UpdateObjective();
-				GameManager.Instance.hasOpenedNotepad = true;
-			}
-		}
 	}
 
 	void StartSlideDown()
@@ -148,8 +138,6 @@ public class Notepad : MonoBehaviour
 		_isShown = false;
 		_audioSource.clip = noteBookDownSFX;
 		_audioSource.Play();
-
-		GameManager.Instance.obu.ShowObjective();
 
 		SettingsMenu.Instance.notePadOpen = false;
 	}

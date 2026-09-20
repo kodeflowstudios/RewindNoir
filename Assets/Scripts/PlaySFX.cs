@@ -9,7 +9,9 @@ public class PlaySFX : MonoBehaviour
 
 	void OnEnable()
 	{
-		source.clip = door.isOpen ? openClip : closeClip;
+		if (door != null) source.clip = door.isOpen ? openClip : closeClip;
+		else source.clip = openClip;
+
 		source.Play();
 	}
 }

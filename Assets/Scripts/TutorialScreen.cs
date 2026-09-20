@@ -7,9 +7,6 @@ public class TutorialScreen : MonoBehaviour
 
 	void Start()
 	{
-		if (GameManager.Instance != null) Destroy(GameManager.Instance);
-		if (SettingsMenu.Instance.mainMenu == null) SettingsMenu.Instance.mainMenu = GetComponent<UIDocument>();
-
 		_root = GetComponent<UIDocument>().rootVisualElement;
 
 		var playButton = _root.Q<Button>("button_continue");

@@ -45,8 +45,6 @@ public class ObjOfInterest : MonoBehaviour
 		lookAt?.LookAtPlayer();
 		playerController.DisableMoving();
 
-		GameManager.Instance?.obu?.HideObjective();
-
 		uiToolKitHandler.ShowElements();
 
 		nextDialogueInput ??= new InputAction("NextDialogue", binding: "<Mouse>/leftButton");
@@ -97,8 +95,6 @@ public class ObjOfInterest : MonoBehaviour
 		uiToolKitHandler.HideElements();
 
 		GameManager.Instance.inDialogue = false;
-
-		GameManager.Instance?.obu?.ShowObjective();
 
 		m_OnFinish.Invoke();
 	}

@@ -2460,13 +2460,33 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4499979952208774221, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+      propertyPath: footstepSource
+      value: 
+      objectReference: {fileID: 494274980}
+    - target: {fileID: 4499979952208774221, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+      propertyPath: footstepVolume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499979952208774221, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+      propertyPath: footstepClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499979952208774221, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+      propertyPath: 'footstepClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e66d549b0feec4c11b8f943efa4c165d, type: 3}
+    - target: {fileID: 4499979952208774221, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+      propertyPath: 'footstepClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 07dc629ba15b0414e923ffe89f62ac6a, type: 3}
     - target: {fileID: 4838171786485255785, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 150.96
       objectReference: {fileID: 0}
     - target: {fileID: 4838171786485255785, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7644788
+      value: 1.035
       objectReference: {fileID: 0}
     - target: {fileID: 4838171786485255785, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2537,7 +2557,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1526628891832277928, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 494274983}
   m_SourcePrefab: {fileID: 100100000, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
 --- !u!4 &494274978 stripped
@@ -2556,6 +2576,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e985ea61e52437ea1ee98fdadf7297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!82 &494274980 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 600101173922892009, guid: c4a56c035ffff47ca9e12718389deca4, type: 3}
+  m_PrefabInstance: {fileID: 494274977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &494274983
 Animator:
   serializedVersion: 7
@@ -2572,7 +2597,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -5103,31 +5128,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99462634
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.003175721
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10308562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.009045232
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.469
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 11.83
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0163fbcd8b75f45f9a163a40392d27eb, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -5970,7 +5995,6 @@ GameObject:
   - component: {fileID: 1362951376}
   - component: {fileID: 1362951375}
   - component: {fileID: 1362951374}
-  - component: {fileID: 1362951378}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6064,20 +6088,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1362951378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362951373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aed946b1a74b4c7fb5e3927846b4e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  ltrObjectiveText: {fileID: 1925628241}
-  rtlObjectiveText: {fileID: 1156503767}
 --- !u!1001 &1404445870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6670,7 +6680,6 @@ MonoBehaviour:
   positionB: {x: 0, y: 0, z: 0}
   camRotationA: {x: 0, y: 0, z: 0, w: 0}
   camRotationB: {x: 0, y: 0, z: 0, w: 0}
-  obu: {fileID: 0}
   cinePanTiltA: {fileID: 0}
   cinePanTiltB: {fileID: 0}
   cineCamAPan:
@@ -6942,7 +6951,7 @@ Transform:
   m_GameObject: {fileID: 1548998035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.948861, z: 0, w: 0.3156942}
-  m_LocalPosition: {x: 150.96, y: 1.3644788, z: 55.2}
+  m_LocalPosition: {x: 150.96, y: 1.635, z: 55.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

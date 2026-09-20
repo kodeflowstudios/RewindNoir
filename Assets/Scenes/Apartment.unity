@@ -11751,8 +11751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aed946b1a74b4c7fb5e3927846b4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  ltrObjectiveText: {fileID: 685317711}
-  rtlObjectiveText: {fileID: 1133370697}
 --- !u!114 &2110032136
 MonoBehaviour:
   m_ObjectHideFlags: 0

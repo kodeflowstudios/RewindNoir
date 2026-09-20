@@ -7,6 +7,7 @@ TagManager:
   - Door
   - NPC
   - Object of interest
+  - Transer
   layers:
   - Default
   - TransparentFX

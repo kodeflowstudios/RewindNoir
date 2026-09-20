@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class EndScreen : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class EndScreen : MonoBehaviour
 
     void Start()
     {
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Confined;
+
 		_root = GetComponent<UIDocument>().rootVisualElement;
 
 		var menuButton = _root.Q<Button>("button_main_menu");

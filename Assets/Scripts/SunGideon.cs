@@ -5,7 +5,6 @@ public class SunGideon : MonoBehaviour
 	public PlayerController playerController;
 	public ObjOfInterest objOfInterest;
 	public Animator anim;
-	public SunSceneSwitch swap;
 
     void Start()
     {
@@ -42,6 +41,6 @@ public class SunGideon : MonoBehaviour
 		GameManager.Instance.hasTalked = false;
 		GameManager.Instance.inDialogue = false;
 		GameManager.Instance.enteredEntropy = false;
-		GameManager.Instance.TransitionToNormal();
+		GameManager.Instance.HalfTransitionToNormal();
 	}
 }

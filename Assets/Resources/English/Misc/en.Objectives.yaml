@@ -2,14 +2,30 @@ MetaData:
   Language: English
   TextDirection: LTR
 Dialogue:
-  talk_to_marc:
+  node_0:
     Text: "Look for Officer Marc and talk to him"
-    NextNode: notepad_tutorial
-  notepad_tutorial:
+    NextNode: node_1
+  node_1:
     Text: "Notes updated, press (TAB) to view"
-    NextNode: entropy_tutorial
-  entropy_tutorial:
+    NextNode: node_2
+  node_2:
     Text: "Press (R) to step into the void"
-    NextNode: fin
-  fin:
-    Text: "Investigate and report back to Officer Marc"
+    NextNode: node_3
+  node_3:
+    Text: "Investigate and press (R) to return to Marc"
+    NextNode: node_4
+  node_4:
+    Text: "Talk to Emily"
+    NextNode: node_5
+  node_5:
+    Text: "Press (R) to step into the void"
+    NextNode: node_6
+  node_6:
+    Text: "Investigate the scene"
+    NextNode: node_7
+  node_7:
+    Text: "Press (F) to view phone"
+    NextNode: node_8
+  node_8:
+    Text: "RUN THROUGH THE BATHROOM DOOR"
+    NextNode: node_9

@@ -16,53 +16,9 @@ public class DialogueHandler : MonoBehaviour
 	public List<AudioClip> dialogueClips;
 	public UIDocument resultScreen;
 	public UIToolKitHandler uiToolKitHandler;
-	public InputActionReference cancelAction;
 	ParleyYaml parleyYaml;
 
 	private InputAction nextDialogueInput;
-
-	void OnEnable()
-	{
-		cancelAction.action.performed += CancelDialogue;
-	}
-
-	void OnDisable()
-	{
-		cancelAction.action.performed -= CancelDialogue;
-	}
-
-    private void CancelDialogue(InputAction.CallbackContext context)
-    {
-		if (!GameManager.Instance.hasTalked)
-		{
-			string objective;
-
-			switch (GameManager.Instance.currentScene)
-			{
-				case GameManager.Scenes.CITY:
-					objective = "node_1";
-					break;
-				case GameManager.Scenes.CITY_VOID:
-					objective = "node_1";
-					break;
-				case GameManager.Scenes.APARTMENT:
-					objective = "";
-					break;
-				default:
-					objective = "";
-					break;
-			}
-			GameManager.Instance.obu.UpdateObjective(objective);
-			GameManager.Instance.hasTalked = true;
-		}
-
-		playerController.EnableMoving();
-		uiToolKitHandler.HideElements();
-		uiToolKitHandler.ClearChoiceButtons();
-
-		GameManager.Instance.inDialogue = false;
-		GameManager.Instance.obu.ShowObjective();
-    }
 
     void Start()
 	{
@@ -83,8 +39,6 @@ public class DialogueHandler : MonoBehaviour
 
 		lookAt?.LookAtPlayer();
 		playerController.DisableMoving();
-
-		GameManager.Instance.obu.HideObjective();
 
 		uiToolKitHandler.ShowElements();
 
@@ -137,7 +91,6 @@ public class DialogueHandler : MonoBehaviour
 
 		if (!GameManager.Instance.hasTalked)
 		{
-			GameManager.Instance.obu.UpdateObjective();
 			GameManager.Instance.hasTalked = true;
 		}
 
@@ -146,13 +99,12 @@ public class DialogueHandler : MonoBehaviour
 
 		GameManager.Instance.inDialogue = false;
 
-		GameManager.Instance.obu.ShowObjective();
-
 		if (parleyYaml.Flags.IsFlagSet("selected") && GameManager.Instance.currentScene == GameManager.Scenes.CITY)
 		{
 			GameManager.Instance.hasTalked = false;
 			GameManager.Instance.inDialogue = false;
 			GameManager.Instance.enteredEntropy = false;
+			GameManager.Instance.npcDialogue = null;
 			SceneSwitcher.SwitchScene("Apartment");
 		}
 	}

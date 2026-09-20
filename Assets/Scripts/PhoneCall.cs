@@ -17,6 +17,7 @@ public class PhoneCall : MonoBehaviour
 	private VisualElement _root;
 	private VisualElement _phone;
 	private Label _hintLabel;
+	private Label _toggleLabel;
 	private float _slideDuration = 0.3f;
 	private bool _isShown = false;
 	private Coroutine _ringCoroutine;
@@ -28,9 +29,13 @@ public class PhoneCall : MonoBehaviour
 		_root = GetComponent<UIDocument>().rootVisualElement;
 
 		_phone = _root.Q<VisualElement>("phone");
+		_toggleLabel = _root.Q<Label>("label_toggle");
 		_hintLabel = _root.Q<Label>("label_hint");
 
-		_root.style.display = DisplayStyle.None;
+		_root.style.display = DisplayStyle.Flex;
+		_toggleLabel.style.display = DisplayStyle.None;
+		_hintLabel.style.display = DisplayStyle.None;
+		_phone.style.display = DisplayStyle.None;
 
 		_sequence = GetComponent<ObjOfInterest>();
 
@@ -44,6 +49,9 @@ public class PhoneCall : MonoBehaviour
 
 	IEnumerator RingAnimation()
 	{
+		_toggleLabel.style.display = DisplayStyle.Flex;
+		_hintLabel.style.display = DisplayStyle.None;
+
 		_canAnswer = true;
 		audioSource1.clip = ringingSfx;
 		audioSource1.loop = true;
@@ -93,6 +101,7 @@ public class PhoneCall : MonoBehaviour
 		if (!_isShown) return;
 		_sequence.StartDialogue();
 		StopCoroutine(_ringCoroutine);
+		_toggleLabel.style.display = DisplayStyle.None;
 		_hintLabel.style.display = DisplayStyle.None;
 		_phone.style.rotate = new Rotate(0);
 		audioSource1.loop = false;
@@ -103,6 +112,7 @@ public class PhoneCall : MonoBehaviour
 
 	private void Toggle(InputAction.CallbackContext context)
 	{
+		if (_ringCoroutine == null) return;
 		if (GameManager.Instance.inDialogue) return;
 		if (SettingsMenu.Instance.isPaused) return;
 
@@ -125,11 +135,14 @@ public class PhoneCall : MonoBehaviour
 
 	IEnumerator SlideUp()
 	{
+		if (_ringCoroutine != null) _toggleLabel.style.display = DisplayStyle.None;
 		playerController.DisableMoving();
 
 		SettingsMenu.Instance.notePadOpen = true;
 
 		_root.style.display = DisplayStyle.Flex;
+		_phone.style.display = DisplayStyle.Flex;
+		_hintLabel.style.display = DisplayStyle.Flex;
 
 		float timeElapsed = 0;
 
@@ -153,8 +166,6 @@ public class PhoneCall : MonoBehaviour
 		{
 			if (!GameManager.Instance.hasOpenedNotepad)
 			{
-				GameManager.Instance.obu.HideObjective();
-				GameManager.Instance.obu.UpdateObjective();
 				GameManager.Instance.hasOpenedNotepad = true;
 			}
 		}
@@ -186,11 +197,19 @@ public class PhoneCall : MonoBehaviour
 
 		_phone.style.marginTop = 0;
 
-		_root.style.display = DisplayStyle.None;
+		if (_ringCoroutine != null)
+		{
+			_toggleLabel.style.display = DisplayStyle.Flex;
+		}
+		else
+		{
+			_toggleLabel.style.display = DisplayStyle.None;
+		}
+
+		_hintLabel.style.display = DisplayStyle.None;
+		_phone.style.display = DisplayStyle.None;
 
 		_isShown = false;
-
-		GameManager.Instance.obu.ShowObjective();
 
 		SettingsMenu.Instance.notePadOpen = false;
 	}
